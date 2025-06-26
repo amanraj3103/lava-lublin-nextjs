@@ -8,7 +8,6 @@ import MenuGrid from '../../components/Order/MenuGrid';
 import CartDrawer from '../../components/Order/CartDrawer';
 import TrendingCarousel from '../../components/Order/TrendingCarousel';
 import CategoryNav from '../../components/Order/CategoryNav';
-import Recommendations from '../../components/Order/Recommendations';
 import styles from './page.module.css';
 import OrderLoading from '../../components/Order/OrderLoading';
 
@@ -70,11 +69,6 @@ function OrderPageContent({ data, activeCategory, setActiveCategory, cartOpen, s
     }
   };
 
-  // Gather recommended items (e.g., drinks, sauces)
-  const recommendedItems = data.categories
-    .flatMap((cat) => cat.items)
-    .filter((item) => item.tags && (item.tags.includes('drink') || item.tags.includes('sauce')))
-    .slice(0, 8);
 
   // Gather trending/bestSeller items from all categories, EXCLUDING recommended items
   const trendingItems = data.categories
