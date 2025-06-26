@@ -1,0 +1,271 @@
+{
+  "categories": [
+    {
+      "id": "kanapki",
+      "name": "Kanapki",
+      "items": [
+        {
+          "id": "golden_supreme",
+          "name": "Kanapka Golden Supreme",
+          "description": "Złota bułka brioche, specjalny chrupiący kurczak Lava, pomidor, sałata, zielona papryka, cebula, rukola, majonez green goddess i cheese quake",
+          "price": 35.99,
+          "image": "/images/golden_supreme.jpg",
+          "tags": ["bestSeller"],
+          "bestSeller": true,
+          "recommendations": ["lava_wrap", "coca_cola"]
+        },
+        {
+          "id": "chicken_supreme",
+          "name": "Kanapka Chicken Supreme",
+          "description": "Złota bułka brioche, grillowany kurczak Lava, pomidor, sałata, zielona papryka, karmelizowana cebula, rukola, majonez green goddess i cheese quake",
+          "price": 32.99,
+          "image": "/images/chicken_supreme.jpg",
+          "tags": [],
+          "recommendations": ["golden_supreme", "fanta"]
+        },
+        {
+          "id": "trojkatna",
+          "name": "Kanapka Trójkątna",
+          "description": "Tortilla, specjalny grillowany kurczak Lava, karmelizowana cebula, specjalny sos Lava, cheese quake, sos sriracha",
+          "price": 17.99,
+          "image": "/images/trojkatna.jpg",
+          "tags": [],
+          "recommendations": ["sriracha", "sprite"]
+        },
+        {
+          "id": "maharaja_sandwich",
+          "name": "Kanapka Maharaja",
+          "description": "Złota bułka brioche, wegetariański kotlet Lava, sałata, cebula, pomidor, specjalny sos Lava, majonez green goddess",
+          "price": 23.99,
+          "image": "/images/maharaja_sandwich.jpg",
+          "tags": ["vegetarian"],
+          "recommendations": ["green_goddess", "beskid_gazowana"]
+        }
+      ]
+    },
+    {
+      "id": "burger_specjaly",
+      "name": "Burgery Specjały Lava",
+      "items": [
+        {
+          "id": "hot_honey_burger",
+          "name": "Hot Honey Burger",
+          "description": "Miękka, maślana bułka z soczystym, chrupiącym kawałkiem kurczaka bez kości z miodowo‑ostra nutą i marynowanym ogórkiem",
+          "price": 47.99,
+          "image": "/images/hot_honey_burger.jpg",
+          "tags": ["bestSeller"],
+          "bestSeller": true,
+          "recommendations": ["cheese_fries_mechanika", "coca_zero"]
+        },
+        {
+          "id": "turbo_grill_burger",
+          "name": "Burger Turbo Grill",
+          "description": "Bułka brioche, grillowany i smażony kurczak Lava, pomidor, karmelizowana cebula, sos Lava, masala",
+          "price": 31.99,
+          "image": "/images/turbo_grill_burger.jpg",
+          "tags": ["bestSeller"],
+          "bestSeller": true,
+          "recommendations": ["laps_one", "sprite"]
+        },
+        {
+          "id": "turbo_burger",
+          "name": "Turbo Burger",
+          "description": "Bułka brioche, smażony kurczak Lava, pomidor, sos Lava, masala",
+          "price": 28.99,
+          "image": "/images/turbo_burger.jpg",
+          "tags": [],
+          "recommendations": ["turbo_grill_burger", "fanta"]
+        },
+        {
+          "id": "carbon_burger",
+          "name": "Carbon Burger",
+          "description": "Bułka brioche, grillowany kurczak Lava, pomidor, karmelizowana cebula, sos Lava, masala",
+          "price": 26.99,
+          "image": "/images/carbon_burger.jpg",
+          "tags": [],
+          "recommendations": ["turbo_burger", "coca_cola"]
+        },
+        {
+          "id": "maharaja_burger",
+          "name": "Maharaja Burger",
+          "description": "Bułka brioche, wegetariański kotlet Lava, pomidor, sałata, rukola, sos Lava, majonez green goddess",
+          "price": 19.99,
+          "image": "/images/maharaja_burger.jpg",
+          "tags": ["vegetarian"],
+          "recommendations": ["carbon_burger", "sprite"]
+        }
+      ]
+    },
+    {
+      "id": "wrapy",
+      "name": "Wrapy",
+      "items": [
+        {
+          "id": "lava_wrap",
+          "name": "Lava Wrap",
+          "description": "Tortilla z masłem, smażony kurczak Lava, pomidor, sałata, zielona papryka, cheese quake, majonez green goddess i sos Lava",
+          "price": 26.99,
+          "image": "/images/lava_wrap.jpg",
+          "tags": ["bestSeller"],
+          "bestSeller": true,
+          "recommendations": ["turbo_burger", "beskid_niegaz"]
+        },
+        {
+          "id": "lafino_wrap",
+          "name": "Lafino Wrap",
+          "description": "Tortilla z masłem, grillowany kurczak Lava, karmelizowana cebula, pomidor, sałata, zielona papryka, cheese quake, majonez green goddess i sos Lava",
+          "price": 27.99,
+          "image": "/images/lafino_wrap.jpg",
+          "tags": ["bestSeller"],
+          "bestSeller": true,
+          "recommendations": ["lava_wrap", "coca_zero"]
+        },
+        {
+          "id": "maharaja_wrap",
+          "name": "Maharaja Wrap",
+          "description": "Tortilla z masłem, wegetariański kotlet Lava, pomidor, sałata, rukola, sos Lava, majonez green goddess",
+          "price": 23.99,
+          "image": "/images/maharaja_wrap.jpg",
+          "tags": ["vegetarian"],
+          "recommendations": ["maharaja_sandwich", "sprite"]
+        },
+        {
+          "id": "kinder_wrap",
+          "name": "Kinder Wrap",
+          "description": "Tortilla kinder z masłem, smażony kurczak Lava, pomidor, sałata, majonez green goddess i sos Lava",
+          "price": 22.99,
+          "image": "/images/kinder_wrap.jpg",
+          "tags": [],
+          "recommendations": ["lava_wrap", "coca_cola"]
+        },
+        {
+          "id": "kinder_fire_wrap",
+          "name": "Kinder Fire Wrap",
+          "description": "Tortilla kinder z masłem, grillowany kurczak Lava, pomidor, sałata, majonez green goddess i sos Lava",
+          "price": 16.99,
+          "image": "/images/kinder_fire_wrap.jpg",
+          "tags": [],
+          "recommendations": ["lava_wrap", "sprite"]
+        }
+      ]
+    },
+    {
+      "id": "chicken_dania",
+      "name": "Dania z Kurczakiem Smażonym",
+      "items": [
+        {
+          "id": "jumbo_box",
+          "name": "Jumbo Box",
+          "description": "8 kawałków udka bez kości w tajnej masali Lava, z dwoma sosami",
+          "price": 42.99,
+          "image": "/images/jumbo_box.jpg",
+          "tags": ["bestSeller"],
+          "bestSeller": true,
+          "recommendations": ["cheese_fries_mechanika", "coca_cola"]
+        },
+        {
+          "id": "lunch_box",
+          "name": "Lunch Box",
+          "description": "5 kawałków udka bez kości w tajnej masali Lava, z jednym sosem",
+          "price": 29.99,
+          "image": "/images/lunch_box.jpg",
+          "tags": [],
+          "recommendations": ["cheese_fries_mechanika", "sprite"]
+        },
+        {
+          "id": "dzieciece_danie",
+          "name": "Dziecięce Danie",
+          "description": "3 kawałki udka bez kości w tajnej masali Lava, z jednym sosem",
+          "price": 19.99,
+          "image": "/images/dzieciece_danie.jpg",
+          "tags": [],
+          "recommendations": ["beskid_gaz", "fanta"]
+        }
+      ]
+    },
+    {
+      "id": "specjaly_politechniki",
+      "name": "Specjały Politechniki",
+      "items": [
+        {
+          "id": "cheese_fries_mechanika",
+          "name": "Cheese Fries Mechanika",
+          "description": "Frytki, paski kurczaka Lava, cebula, tortilla tacos, sos Lava, cheese quake",
+          "price": 29.99,
+          "image": "/images/cheese_fries.jpg",
+          "tags": ["bestSeller"],
+          "bestSeller": true,
+          "recommendations": ["jumbo_box", "coca_zero"]
+        },
+        {
+          "id": "politechniczny_spicy_bite",
+          "name": "Politechniczny Spicy Bite",
+          "description": "Smażony kurczak Lava w sosie BBQ z cebulą i sezamem",
+          "price": 27.99,
+          "image": "/images/politechniczny_spicy.jpg",
+          "tags": ["trending"],
+          "trending": true,
+          "recommendations": ["lunch_box", "sprite"]
+        }
+      ]
+    },
+    {
+      "id": "burgery_kinder",
+      "name": "Burgery Kinder",
+      "items": [
+        {
+          "id": "ai_burger",
+          "name": "Ai Burger",
+          "description": "Bułka brioche kinder, smażony kurczak Lava i sałata",
+          "price": 17.99,
+          "image": "/images/ai_burger.jpg",
+          "tags": ["bestSeller"],
+          "bestSeller": true,
+          "recommendations": ["kinder_wrap", "beskid_gaz"]
+        }
+      ]
+    },
+    {
+      "id": "sosy",
+      "name": "Sosy",
+      "items": [
+        {
+          "id": "lava_special_sos",
+          "name": "Sos Lava Special",
+          "description": "Kremowy, pikantny majonezowy sos z pieprzem i czosnkiem.",
+          "price": 3.99,
+          "image": "/images/lava_special.jpg",
+          "tags": ["sauce"]
+        },
+        {
+          "id": "green_goddess",
+          "name": "Majonez Green Goddess",
+          "description": "Aromatyczny, ziołowy majonez do sałatek i kanapek.",
+          "price": 3.99,
+          "image": "/images/green_goddess.jpg",
+          "tags": ["sauce"]
+        },
+        {
+          "id": "sriracha",
+          "name": "Sos Sriracha",
+          "description": "Klasyczny pikantny sos chili i octowy.",
+          "price": 3.99,
+          "image": "/images/sriracha.jpg",
+          "tags": ["sauce"]
+        }
+      ]
+    },
+    {
+      "id": "napoje",
+      "name": "Napoje",
+      "items": [
+        {"id":"coca_cola","name":"Coca‑Cola (0.5l)","price":8.99,"image":"/images/coca_cola.jpg","tags":["drink"]},
+        {"id":"coca_zero","name":"Coca‑Cola Zero (0.5l)","price":8.99,"image":"/images/coca_zero.jpg","tags":["drink"]},
+        {"id":"sprite","name":"Sprite (0.5l)","price":8.99,"image":"/images/sprite.jpg","tags":["drink"]},
+        {"id":"fanta","name":"Fanta (0.5l)","price":8.99,"image":"/images/fanta.jpg","tags":["drink"]},
+        {"id":"beskid_gaz","name":"Beskid Gazowana (0.5l)","price":5.99,"image":"/images/beskid_gaz.jpg","tags":["drink"]},
+        {"id":"beskid_niegaz","name":"Beskid Niegazowana (0.5l)","price":5.99,"image":"/images/beskid_niegaz.jpg","tags":["drink"]}
+      ]
+    }
+  ]
+} 

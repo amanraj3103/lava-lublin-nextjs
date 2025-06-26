@@ -1,0 +1,271 @@
+{
+  "categories": [
+    {
+      "id": "kanapki",
+      "name": "Сендвічі",
+      "items": [
+        {
+          "id": "golden_supreme",
+          "name": "Golden Supreme Сендвіч",
+          "description": "Золота булочка бріош з хрусткою куркою Lava, помідором, салатом, зеленою паприкою, цибулею, руколою, майонезом green goddess та сирним соусом.",
+          "price": 35.99,
+          "image": "/images/golden_supreme.jpg",
+          "tags": ["bestSeller"],
+          "bestSeller": true,
+          "recommendations": ["lava_wrap", "coca_cola"]
+        },
+        {
+          "id": "chicken_supreme",
+          "name": "Chicken Supreme Сендвіч",
+          "description": "Золота булочка бріош з грильованою куркою Lava, помідором, салатом, зеленою паприкою, карамелізованою цибулею, руколою, майонезом green goddess та сирним соусом.",
+          "price": 32.99,
+          "image": "/images/chicken_supreme.jpg",
+          "tags": [],
+          "recommendations": ["golden_supreme", "fanta"]
+        },
+        {
+          "id": "trojkatna",
+          "name": "Трикутний Сендвіч",
+          "description": "Тортилья з грильованою куркою Lava, карамелізованою цибулею, спеціальним соусом Lava, сирним соусом та срирачею.",
+          "price": 17.99,
+          "image": "/images/trojkatna.jpg",
+          "tags": [],
+          "recommendations": ["sriracha", "sprite"]
+        },
+        {
+          "id": "maharaja_sandwich",
+          "name": "Maharaja Сендвіч (Вегетаріанський)",
+          "description": "Золота булочка бріош з вегетаріанською котлетою Lava, салатом, цибулею, помідором, спеціальним соусом Lava та майонезом green goddess.",
+          "price": 23.99,
+          "image": "/images/maharaja_sandwich.jpg",
+          "tags": ["vegetarian"],
+          "recommendations": ["green_goddess", "beskid_gazowana"]
+        }
+      ]
+    },
+    {
+      "id": "burger_specjaly",
+      "name": "Фірмові Бургери Lava",
+      "items": [
+        {
+          "id": "hot_honey_burger",
+          "name": "Hot Honey Бургер",
+          "description": "М'яка, масляна булочка з соковитою, хрусткою куркою без кістки, солодко-гострою медовою глазур'ю та огірками.",
+          "price": 47.99,
+          "image": "/images/hot_honey_burger.jpg",
+          "tags": ["bestSeller"],
+          "bestSeller": true,
+          "recommendations": ["cheese_fries_mechanika", "coca_zero"]
+        },
+        {
+          "id": "turbo_grill_burger",
+          "name": "Turbo Grill Бургер",
+          "description": "Булочка бріош з грильованою та смаженою куркою Lava, помідором, карамелізованою цибулею, соусом Lava та спеціями масала.",
+          "price": 31.99,
+          "image": "/images/turbo_grill_burger.jpg",
+          "tags": ["bestSeller"],
+          "bestSeller": true,
+          "recommendations": ["laps_one", "sprite"]
+        },
+        {
+          "id": "turbo_burger",
+          "name": "Turbo Бургер",
+          "description": "Булочка бріош з смаженою куркою Lava, помідором, соусом Lava та спеціями масала.",
+          "price": 28.99,
+          "image": "/images/turbo_burger.jpg",
+          "tags": [],
+          "recommendations": ["turbo_grill_burger", "fanta"]
+        },
+        {
+          "id": "carbon_burger",
+          "name": "Carbon Бургер",
+          "description": "Булочка бріош з грильованою куркою Lava, помідором, карамелізованою цибулею, соусом Lava та спеціями масала.",
+          "price": 26.99,
+          "image": "/images/carbon_burger.jpg",
+          "tags": [],
+          "recommendations": ["turbo_burger", "coca_cola"]
+        },
+        {
+          "id": "maharaja_burger",
+          "name": "Maharaja Бургер (Вегетаріанський)",
+          "description": "Булочка бріош з вегетаріанською котлетою Lava, помідором, салатом, руколою, соусом Lava та майонезом green goddess.",
+          "price": 19.99,
+          "image": "/images/maharaja_burger.jpg",
+          "tags": ["vegetarian"],
+          "recommendations": ["carbon_burger", "sprite"]
+        }
+      ]
+    },
+    {
+      "id": "wrapy",
+      "name": "Врапи",
+      "items": [
+        {
+          "id": "lava_wrap",
+          "name": "Lava Врап",
+          "description": "Тортилья з маслом, смажена курка Lava, помідор, салат, зелена паприка, сирний соус, майонез green goddess та соус Lava.",
+          "price": 26.99,
+          "image": "/images/lava_wrap.jpg",
+          "tags": ["bestSeller"],
+          "bestSeller": true,
+          "recommendations": ["turbo_burger", "beskid_niegaz"]
+        },
+        {
+          "id": "lafino_wrap",
+          "name": "Lafino Врап",
+          "description": "Тортилья з маслом, грильована курка Lava, карамелізована цибуля, помідор, салат, зелена паприка, сирний соус, майонез green goddess та соус Lava.",
+          "price": 27.99,
+          "image": "/images/lafino_wrap.jpg",
+          "tags": ["bestSeller"],
+          "bestSeller": true,
+          "recommendations": ["lava_wrap", "coca_zero"]
+        },
+        {
+          "id": "maharaja_wrap",
+          "name": "Maharaja Врап (Вегетаріанський)",
+          "description": "Тортилья з маслом, вегетаріанська котлета Lava, помідор, салат, рукола, соус Lava та майонез green goddess.",
+          "price": 23.99,
+          "image": "/images/maharaja_wrap.jpg",
+          "tags": ["vegetarian"],
+          "recommendations": ["maharaja_sandwich", "sprite"]
+        },
+        {
+          "id": "kinder_wrap",
+          "name": "Дитячий Врап",
+          "description": "Тортилья з маслом, смажена курка Lava, помідор, салат, майонез green goddess та соус Lava. Дитячий розмір.",
+          "price": 22.99,
+          "image": "/images/kinder_wrap.jpg",
+          "tags": [],
+          "recommendations": ["lava_wrap", "coca_cola"]
+        },
+        {
+          "id": "kinder_fire_wrap",
+          "name": "Дитячий Гострий Врап",
+          "description": "Тортилья з маслом, грильована курка Lava, помідор, салат, майонез green goddess та соус Lava. Дитячий розмір, трохи гострий.",
+          "price": 16.99,
+          "image": "/images/kinder_fire_wrap.jpg",
+          "tags": [],
+          "recommendations": ["lava_wrap", "sprite"]
+        }
+      ]
+    },
+    {
+      "id": "chicken_dania",
+      "name": "Страви з Куркою",
+      "items": [
+        {
+          "id": "jumbo_box",
+          "name": "Jumbo Box",
+          "description": "8 шматочків курячого стегна без кістки в секретній масалі Lava, подається з двома соусами.",
+          "price": 42.99,
+          "image": "/images/jumbo_box.jpg",
+          "tags": ["bestSeller"],
+          "bestSeller": true,
+          "recommendations": ["cheese_fries_mechanika", "coca_cola"]
+        },
+        {
+          "id": "lunch_box",
+          "name": "Lunch Box",
+          "description": "5 шматочків курячого стегна без кістки в секретній масалі Lava, подається з одним соусом.",
+          "price": 29.99,
+          "image": "/images/lunch_box.jpg",
+          "tags": [],
+          "recommendations": ["cheese_fries_mechanika", "sprite"]
+        },
+        {
+          "id": "dzieciece_danie",
+          "name": "Дитяча Страва",
+          "description": "3 шматочки курячого стегна без кістки в секретній масалі Lava, подається з одним соусом.",
+          "price": 19.99,
+          "image": "/images/dzieciece_danie.jpg",
+          "tags": [],
+          "recommendations": ["beskid_gaz", "fanta"]
+        }
+      ]
+    },
+    {
+      "id": "specjaly_politechniki",
+      "name": "Фірмові Страви",
+      "items": [
+        {
+          "id": "cheese_fries_mechanika",
+          "name": "Mechanika Картопля фрі з сиром",
+          "description": "Картопля фрі з курячими смужками Lava, цибулею, кукурудзяними чіпсами, соусом Lava та сирним соусом.",
+          "price": 29.99,
+          "image": "/images/cheese_fries.jpg",
+          "tags": ["bestSeller"],
+          "bestSeller": true,
+          "recommendations": ["jumbo_box", "coca_zero"]
+        },
+        {
+          "id": "politechniczny_spicy_bite",
+          "name": "Гострі Курячі Кусочки",
+          "description": "Смажена курка Lava в BBQ соусі з цибулею та кунжутом.",
+          "price": 27.99,
+          "image": "/images/politechniczny_spicy.jpg",
+          "tags": ["trending"],
+          "trending": true,
+          "recommendations": ["lunch_box", "sprite"]
+        }
+      ]
+    },
+    {
+      "id": "burgery_kinder",
+      "name": "Дитячі Бургери",
+      "items": [
+        {
+          "id": "ai_burger",
+          "name": "AI Бургер",
+          "description": "Міні булочка бріош з смаженою куркою Lava та салатом. Дитячий розмір.",
+          "price": 17.99,
+          "image": "/images/ai_burger.jpg",
+          "tags": ["bestSeller"],
+          "bestSeller": true,
+          "recommendations": ["kinder_wrap", "beskid_gaz"]
+        }
+      ]
+    },
+    {
+      "id": "sosy",
+      "name": "Соуси",
+      "items": [
+        {
+          "id": "lava_special_sos",
+          "name": "Lava Special Соус",
+          "description": "Кремовий, гострий майонезний соус з перцем та часником.",
+          "price": 3.99,
+          "image": "/images/lava_special.jpg",
+          "tags": ["sauce"]
+        },
+        {
+          "id": "green_goddess",
+          "name": "Green Goddess Майонез",
+          "description": "Ароматний, трав'яний майонез для салатів та сендвічів.",
+          "price": 3.99,
+          "image": "/images/green_goddess.jpg",
+          "tags": ["sauce"]
+        },
+        {
+          "id": "sriracha",
+          "name": "Sriracha Соус",
+          "description": "Класичний гострий соус чилі та оцтовий соус.",
+          "price": 3.99,
+          "image": "/images/sriracha.jpg",
+          "tags": ["sauce"]
+        }
+      ]
+    },
+    {
+      "id": "napoje",
+      "name": "Напої",
+      "items": [
+        {"id":"coca_cola","name":"Coca‑Cola (0.5л)","price":8.99,"image":"/images/coca_cola.jpg","tags":["drink"]},
+        {"id":"coca_zero","name":"Coca‑Cola Zero (0.5л)","price":8.99,"image":"/images/coca_zero.jpg","tags":["drink"]},
+        {"id":"sprite","name":"Sprite (0.5л)","price":8.99,"image":"/images/sprite.jpg","tags":["drink"]},
+        {"id":"fanta","name":"Fanta (0.5л)","price":8.99,"image":"/images/fanta.jpg","tags":["drink"]},
+        {"id":"beskid_gaz","name":"Beskid Spring Газована Вода (0.5л)","price":5.99,"image":"/images/beskid_gaz.jpg","tags":["drink"]},
+        {"id":"beskid_niegaz","name":"Beskid Spring Негазована Вода (0.5л)","price":5.99,"image":"/images/beskid_niegaz.jpg","tags":["drink"]}
+      ]
+    }
+  ]
+} 

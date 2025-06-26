@@ -1,0 +1,63 @@
+{
+  "nav": {
+    "menu": "Menu",
+    "about": "O nas",
+    "visit": "Odwiedź",
+    "contact": "Kontakt"
+  },
+  "hero": {
+    "title": "Gdzie Chrupkość Spotyka Szczęście",
+    "subtitle": "Najodważniejsze street food w Lublinie. Miejska energia. Rozkoszne smaki.",
+    "seeMenu": "Zobacz Menu",
+    "orderNow": "Zamów Teraz",
+    "visitUs": "Odwiedź Nas"
+  },
+  "menu": {
+    "title": "Nasze Menu",
+    "lavaBurger": "Lava Burger",
+    "lavaBurgerDesc": "Nasz sygnaturowy burger z chrupiącym kurczakiem i specjalnym sosem",
+    "lavaGoldBurger": "Lava Gold Burger",
+    "lavaGoldBurgerDesc": "Premium burger ze złotą chrupiącą panierką",
+    "goldenWings": "Złote Skrzydełka",
+    "goldenWingsDesc": "Chrupiące skrzydełka kurczaka ze złotą przyprawą",
+    "lavaPowerWrap": "Lava Power Wrap",
+    "lavaPowerWrapDesc": "Potężny wrap z chrupiącym kurczakiem i świeżymi warzywami",
+    "orderNow": "Zamów Teraz"
+  },
+  "about": {
+    "title": "O Lava Lublin",
+    "desc": "Przynosimy Ci idealną mieszankę chrupiących tekstur i śmiałych smaków. Nasze zaangażowanie w jakościowe składniki i innowacyjne przepisy sprawia, że każdy kęs to eksplozja smaku."
+  },
+  "social": {
+    "title": "Śledź Naszą Podróż",
+    "follow": "Śledź nas na Instagramie"
+  },
+  "location": {
+    "title": "Odwiedź Nas",
+    "address": "ul. Krakowskie Przedmieście 15, 20-002 Lublin, Polska",
+    "hoursTitle": "Godziny Otwarcia:",
+    "hours1": "Poniedziałek - Piątek: 11:00 - 22:00",
+    "hours2": "Sobota - Niedziela: 12:00 - 23:00",
+    "directions": "Pobierz Kierunki"
+  },
+  "contact": {
+    "title": "Skontaktuj Się Z Nami",
+    "name": "Twoje Imię",
+    "phone": "Numer Telefonu",
+    "message": "Twoja Wiadomość",
+    "email": "Twój Email",
+    "send": "Wyślij Wiadomość",
+    "thankyou": "Dziękujemy za wiadomość!"
+  },
+  "order": {
+    "trending": "Trendy i Bestsellery",
+    "browseMenu": "Przeglądaj Menu",
+    "drawerMenu": "Menu",
+    "loading": "Ładowanie menu...",
+    "failed": "Nie udało się załadować menu.",
+    "addToCart": "Dodaj do koszyka",
+    "vegetarian": "Wegetariańskie",
+    "spicy": "Ostre",
+    "bestSeller": "Bestseller"
+  }
+} 

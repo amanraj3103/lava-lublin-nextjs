@@ -1,0 +1,118 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap');
+
+/* ===== RESET & BASE STYLES ===== */
+html,
+body {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  background-color: #000000;
+  color: #ffffff;
+  line-height: 1.6;
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100vw;
+}
+
+/* ===== CONTENT CONTAINER STYLES ===== */
+.page-wrapper {
+  max-width: 100vw;
+  width: 100%;
+  margin: 0 auto;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+/* ===== CUSTOM SCROLLBAR ===== */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1a1a1a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #ff5722;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #ff7043;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* ===== NAVIGATION STYLES ===== */
+.nav-main {
+  padding: 0px !important;
+}
+
+.nav-logo-container {
+  padding-left: 1rem !important;
+}
+
+.nav-logo {
+  font-size: 1.75rem !important;
+  font-weight: 900 !important;
+  color: white !important;
+}
+
+.nav-button {
+  color: white !important;
+  font-size: 1rem !important;
+  font-weight: 700 !important;
+}
+
+/* Navigation responsive fixes */
+@media (min-width: 1024px) {
+  .hidden.lg\:flex {
+    display: flex !important;
+  }
+  
+  .lg\:hidden {
+    display: none !important;
+  }
+}
+
+@media (max-width: 1023px) {
+  .hidden.lg\:flex {
+    display: none !important;
+  }
+  
+  .lg\:hidden {
+    display: flex !important;
+  }
+}
+
+/* Utility classes and global animations */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+} 

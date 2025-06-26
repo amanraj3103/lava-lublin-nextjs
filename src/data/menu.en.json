@@ -1,0 +1,271 @@
+{
+  "categories": [
+    {
+      "id": "kanapki",
+      "name": "Sandwiches",
+      "items": [
+        {
+          "id": "golden_supreme",
+          "name": "Golden Supreme Sandwich",
+          "description": "Golden brioche bun with crispy Lava chicken, tomato, lettuce, green pepper, onion, arugula, green goddess mayo, and melted cheese sauce.",
+          "price": 35.99,
+          "image": "/images/golden_supreme.jpg",
+          "tags": ["bestSeller"],
+          "bestSeller": true,
+          "recommendations": ["lava_wrap", "coca_cola"]
+        },
+        {
+          "id": "chicken_supreme",
+          "name": "Chicken Supreme Sandwich",
+          "description": "Golden brioche bun with grilled Lava chicken, tomato, lettuce, green pepper, caramelized onion, arugula, green goddess mayo, and melted cheese sauce.",
+          "price": 32.99,
+          "image": "/images/chicken_supreme.jpg",
+          "tags": [],
+          "recommendations": ["golden_supreme", "fanta"]
+        },
+        {
+          "id": "trojkatna",
+          "name": "Triangle Sandwich",
+          "description": "Tortilla wrap with grilled Lava chicken, caramelized onion, special Lava sauce, melted cheese sauce, and sriracha.",
+          "price": 17.99,
+          "image": "/images/trojkatna.jpg",
+          "tags": [],
+          "recommendations": ["sriracha", "sprite"]
+        },
+        {
+          "id": "maharaja_sandwich",
+          "name": "Maharaja Sandwich (Vegetarian)",
+          "description": "Golden brioche bun with a vegetarian Lava patty, lettuce, onion, tomato, special Lava sauce, and green goddess mayo.",
+          "price": 23.99,
+          "image": "/images/maharaja_sandwich.jpg",
+          "tags": ["vegetarian"],
+          "recommendations": ["green_goddess", "beskid_gazowana"]
+        }
+      ]
+    },
+    {
+      "id": "burger_specjaly",
+      "name": "Lava Signature Burgers",
+      "items": [
+        {
+          "id": "hot_honey_burger",
+          "name": "Hot Honey Burger",
+          "description": "Soft, buttery bun with juicy, crispy boneless chicken, sweet and spicy honey glaze, and pickles.",
+          "price": 47.99,
+          "image": "/images/hot_honey_burger.jpg",
+          "tags": ["bestSeller"],
+          "bestSeller": true,
+          "recommendations": ["cheese_fries_mechanika", "coca_zero"]
+        },
+        {
+          "id": "turbo_grill_burger",
+          "name": "Turbo Grill Burger",
+          "description": "Brioche bun with grilled and fried Lava chicken, tomato, caramelized onion, Lava sauce, and masala spices.",
+          "price": 31.99,
+          "image": "/images/turbo_grill_burger.jpg",
+          "tags": ["bestSeller"],
+          "bestSeller": true,
+          "recommendations": ["laps_one", "sprite"]
+        },
+        {
+          "id": "turbo_burger",
+          "name": "Turbo Burger",
+          "description": "Brioche bun with fried Lava chicken, tomato, Lava sauce, and masala spices.",
+          "price": 28.99,
+          "image": "/images/turbo_burger.jpg",
+          "tags": [],
+          "recommendations": ["turbo_grill_burger", "fanta"]
+        },
+        {
+          "id": "carbon_burger",
+          "name": "Carbon Burger",
+          "description": "Brioche bun with grilled Lava chicken, tomato, caramelized onion, Lava sauce, and masala spices.",
+          "price": 26.99,
+          "image": "/images/carbon_burger.jpg",
+          "tags": [],
+          "recommendations": ["turbo_burger", "coca_cola"]
+        },
+        {
+          "id": "maharaja_burger",
+          "name": "Maharaja Burger (Vegetarian)",
+          "description": "Brioche bun with a vegetarian Lava patty, tomato, lettuce, arugula, Lava sauce, and green goddess mayo.",
+          "price": 19.99,
+          "image": "/images/maharaja_burger.jpg",
+          "tags": ["vegetarian"],
+          "recommendations": ["carbon_burger", "sprite"]
+        }
+      ]
+    },
+    {
+      "id": "wrapy",
+      "name": "Wraps",
+      "items": [
+        {
+          "id": "lava_wrap",
+          "name": "Lava Wrap",
+          "description": "Buttered tortilla with fried Lava chicken, tomato, lettuce, green pepper, melted cheese sauce, green goddess mayo, and Lava sauce.",
+          "price": 26.99,
+          "image": "/images/lava_wrap.jpg",
+          "tags": ["bestSeller"],
+          "bestSeller": true,
+          "recommendations": ["turbo_burger", "beskid_niegaz"]
+        },
+        {
+          "id": "lafino_wrap",
+          "name": "Lafino Wrap",
+          "description": "Buttered tortilla with grilled Lava chicken, caramelized onion, tomato, lettuce, green pepper, melted cheese sauce, green goddess mayo, and Lava sauce.",
+          "price": 27.99,
+          "image": "/images/lafino_wrap.jpg",
+          "tags": ["bestSeller"],
+          "bestSeller": true,
+          "recommendations": ["lava_wrap", "coca_zero"]
+        },
+        {
+          "id": "maharaja_wrap",
+          "name": "Maharaja Wrap (Vegetarian)",
+          "description": "Buttered tortilla with a vegetarian Lava patty, tomato, lettuce, arugula, Lava sauce, and green goddess mayo.",
+          "price": 23.99,
+          "image": "/images/maharaja_wrap.jpg",
+          "tags": ["vegetarian"],
+          "recommendations": ["maharaja_sandwich", "sprite"]
+        },
+        {
+          "id": "kinder_wrap",
+          "name": "Kids' Wrap",
+          "description": "Buttered tortilla with fried Lava chicken, tomato, lettuce, green goddess mayo, and Lava sauce. Kid-sized.",
+          "price": 22.99,
+          "image": "/images/kinder_wrap.jpg",
+          "tags": [],
+          "recommendations": ["lava_wrap", "coca_cola"]
+        },
+        {
+          "id": "kinder_fire_wrap",
+          "name": "Kids' Fire Wrap",
+          "description": "Buttered tortilla with grilled Lava chicken, tomato, lettuce, green goddess mayo, and Lava sauce. Kid-sized, a little spicy.",
+          "price": 16.99,
+          "image": "/images/kinder_fire_wrap.jpg",
+          "tags": [],
+          "recommendations": ["lava_wrap", "sprite"]
+        }
+      ]
+    },
+    {
+      "id": "chicken_dania",
+      "name": "Fried Chicken Meals",
+      "items": [
+        {
+          "id": "jumbo_box",
+          "name": "Jumbo Box",
+          "description": "8 pieces of boneless chicken thigh in Lava's secret masala, served with two sauces.",
+          "price": 42.99,
+          "image": "/images/jumbo_box.jpg",
+          "tags": ["bestSeller"],
+          "bestSeller": true,
+          "recommendations": ["cheese_fries_mechanika", "coca_cola"]
+        },
+        {
+          "id": "lunch_box",
+          "name": "Lunch Box",
+          "description": "5 pieces of boneless chicken thigh in Lava's secret masala, served with one sauce.",
+          "price": 29.99,
+          "image": "/images/lunch_box.jpg",
+          "tags": [],
+          "recommendations": ["cheese_fries_mechanika", "sprite"]
+        },
+        {
+          "id": "dzieciece_danie",
+          "name": "Kids' Meal",
+          "description": "3 pieces of boneless chicken thigh in Lava's secret masala, served with one sauce.",
+          "price": 19.99,
+          "image": "/images/dzieciece_danie.jpg",
+          "tags": [],
+          "recommendations": ["beskid_gaz", "fanta"]
+        }
+      ]
+    },
+    {
+      "id": "specjaly_politechniki",
+      "name": "House Specials",
+      "items": [
+        {
+          "id": "cheese_fries_mechanika",
+          "name": "Mechanika Cheese Fries",
+          "description": "Fries topped with Lava chicken strips, onion, taco tortilla chips, Lava sauce, and melted cheese sauce.",
+          "price": 29.99,
+          "image": "/images/cheese_fries.jpg",
+          "tags": ["bestSeller"],
+          "bestSeller": true,
+          "recommendations": ["jumbo_box", "coca_zero"]
+        },
+        {
+          "id": "politechniczny_spicy_bite",
+          "name": "Spicy Chicken Bites",
+          "description": "Fried Lava chicken in BBQ sauce with onion and sesame seeds.",
+          "price": 27.99,
+          "image": "/images/politechniczny_spicy.jpg",
+          "tags": ["trending"],
+          "trending": true,
+          "recommendations": ["lunch_box", "sprite"]
+        }
+      ]
+    },
+    {
+      "id": "burgery_kinder",
+      "name": "Kids' Burgers",
+      "items": [
+        {
+          "id": "ai_burger",
+          "name": "AI Burger",
+          "description": "Mini brioche bun with fried Lava chicken and lettuce. Kid-sized.",
+          "price": 17.99,
+          "image": "/images/ai_burger.jpg",
+          "tags": ["bestSeller"],
+          "bestSeller": true,
+          "recommendations": ["kinder_wrap", "beskid_gaz"]
+        }
+      ]
+    },
+    {
+      "id": "sosy",
+      "name": "Sauces",
+      "items": [
+        {
+          "id": "lava_special_sos",
+          "name": "Lava Special Sauce",
+          "description": "Creamy, spicy mayonnaise-based sauce with pepper and garlic.",
+          "price": 3.99,
+          "image": "/images/lava_special.jpg",
+          "tags": ["sauce"]
+        },
+        {
+          "id": "green_goddess",
+          "name": "Green Goddess Mayo",
+          "description": "Aromatic, herbed mayo for salads and sandwiches.",
+          "price": 3.99,
+          "image": "/images/green_goddess.jpg",
+          "tags": ["sauce"]
+        },
+        {
+          "id": "sriracha",
+          "name": "Sriracha Sauce",
+          "description": "Classic spicy chili and vinegar sauce.",
+          "price": 3.99,
+          "image": "/images/sriracha.jpg",
+          "tags": ["sauce"]
+        }
+      ]
+    },
+    {
+      "id": "napoje",
+      "name": "Drinks",
+      "items": [
+        {"id":"coca_cola","name":"Coca‑Cola (0.5l)","price":8.99,"image":"/images/coca_cola.jpg","tags":["drink"]},
+        {"id":"coca_zero","name":"Coca‑Cola Zero (0.5l)","price":8.99,"image":"/images/coca_zero.jpg","tags":["drink"]},
+        {"id":"sprite","name":"Sprite (0.5l)","price":8.99,"image":"/images/sprite.jpg","tags":["drink"]},
+        {"id":"fanta","name":"Fanta (0.5l)","price":8.99,"image":"/images/fanta.jpg","tags":["drink"]},
+        {"id":"beskid_gaz","name":"Beskid Spring Sparkling Water (0.5l)","price":5.99,"image":"/images/beskid_gaz.jpg","tags":["drink"]},
+        {"id":"beskid_niegaz","name":"Beskid Spring Still Water (0.5l)","price":5.99,"image":"/images/beskid_niegaz.jpg","tags":["drink"]}
+      ]
+    }
+  ]
+} 

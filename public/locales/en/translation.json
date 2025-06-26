@@ -1,0 +1,63 @@
+{
+  "nav": {
+    "menu": "Menu",
+    "about": "About",
+    "visit": "Visit",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": "Where Crispiness Meets Happiness",
+    "subtitle": "Lublin's boldest street food. Urban energy. Indulgent flavors.",
+    "seeMenu": "See Menu",
+    "orderNow": "Order Now",
+    "visitUs": "Visit Us"
+  },
+  "menu": {
+    "title": "Menu",
+    "lavaBurger": "Lava Burger",
+    "lavaBurgerDesc": "Our signature burger with crispy chicken and special sauce",
+    "lavaGoldBurger": "Lava Gold Burger",
+    "lavaGoldBurgerDesc": "Premium burger with golden crispy coating",
+    "goldenWings": "Golden Wings",
+    "goldenWingsDesc": "Crispy chicken wings with golden seasoning",
+    "lavaPowerWrap": "Lava Power Wrap",
+    "lavaPowerWrapDesc": "Powerful wrap with crispy chicken and fresh veggies",
+    "orderNow": "Order Now"
+  },
+  "about": {
+    "title": "About Lava Lublin",
+    "desc": "We bring you the perfect blend of crispy textures and bold flavors. Our commitment to quality ingredients and innovative recipes makes every bite an explosion of taste."
+  },
+  "social": {
+    "title": "Follow Our Journey",
+    "follow": "Follow us on Instagram"
+  },
+  "location": {
+    "title": "Visit Us",
+    "address": "ul. Krakowskie Przedmieście 15, 20-002 Lublin, Poland",
+    "hoursTitle": "Opening Hours:",
+    "hours1": "Monday - Friday: 11:00 AM - 10:00 PM",
+    "hours2": "Saturday - Sunday: 12:00 PM - 11:00 PM",
+    "directions": "Get Directions"
+  },
+  "contact": {
+    "title": "Contact Us",
+    "name": "Your Name",
+    "phone": "Phone Number",
+    "message": "Your Message",
+    "email": "Your Email",
+    "send": "Send Message",
+    "thankyou": "Thank you for your message!"
+  },
+  "order": {
+    "trending": "Trending & Best Sellers",
+    "browseMenu": "Browse Menu",
+    "drawerMenu": "Menu",
+    "loading": "Loading menu...",
+    "failed": "Failed to load menu.",
+    "addToCart": "Add to cart",
+    "vegetarian": "Vegetarian",
+    "spicy": "Spicy",
+    "bestSeller": "Best Seller"
+  }
+} 

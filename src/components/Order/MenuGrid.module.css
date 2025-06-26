@@ -1,0 +1,314 @@
+.menuGrid {
+  width: 100%;
+  overflow-x: auto;
+  padding-bottom: 0.5rem;
+  -webkit-overflow-scrolling: touch;
+  height: 100%;
+}
+.menuGridInner {
+  display: flex;
+  gap: 1.25rem;
+  min-width: max-content;
+  height: 100%;
+}
+.menuCard {
+  flex-shrink: 0;
+  width: 200px;
+  height: 100%;
+  background: linear-gradient(to right, #000000, #0f172a, #000000);
+  border-radius: 1.25rem;
+  box-shadow: 0 2px 16px 0 rgba(255, 255, 255, 0.10);
+  border: 1px solid #232323;
+  padding: 1rem 1rem 1.25rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+.menuCard:hover {
+  box-shadow: 0 8px 32px 0 rgba(255, 255, 255, 0.18);
+  transform: translateY(-2px) scale(1.03);
+}
+.menuCard > * {
+  width: 100%;
+  text-align: center;
+}
+.menuImage {
+  width: 100%;
+  max-width: 180px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 1rem;
+  margin: 0 auto 1rem auto;
+  background: #18181b;
+  display: block;
+}
+.menuTitle {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #ff9800;
+  margin-bottom: 0.18rem;
+  margin-top: 0.18rem;
+}
+.menuPrice {
+  color: #16a34a;
+  font-weight: 600;
+  margin-bottom: 0.35rem;
+  font-size: 0.95rem;
+}
+.menuDescWrapper {
+  position: relative;
+  width: 100%;
+  min-height: 0;
+  margin-bottom: 0;
+  display: block;
+  flex-direction: unset;
+  align-items: unset;
+}
+.menuDesc {
+  color: #bdbdbd;
+  font-size: 0.95rem;
+  text-align: center;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  max-height: 3.6em;
+  transition: max-height 0.2s;
+  margin-bottom: 0.25rem;
+}
+.viewMoreBtn {
+  background: none;
+  color: #ff9800;
+  border: none;
+  font-size: 0.95rem;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 0.1rem;
+  text-decoration: underline;
+  padding: 0;
+}
+.fullDescOverlay {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  background: rgba(30, 30, 30, 0.98);
+  border-radius: 1.1rem;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.fullDescContent {
+  padding: 1.5rem 1rem 1rem 1rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.fullDescText {
+  color: #fff;
+  font-size: 1rem;
+  margin-bottom: 1.25rem;
+  text-align: center;
+  max-height: 180px;
+  overflow-y: auto;
+}
+.closeDescBtn {
+  background: #ff9800;
+  color: #fff;
+  border: none;
+  border-radius: 0.75rem;
+  padding: 0.5rem 1.5rem;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.closeDescBtn:hover {
+  background: #ff5722;
+}
+.menuActions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  width: 100%;
+  margin-top: 0;
+  padding-top: 0;
+}
+.addButton {
+  background: linear-gradient(90deg, #ff9800 0%, #ff5722 100%);
+  color: #fff;
+  font-weight: bold;
+  border: none;
+  border-radius: 0.75rem;
+  padding: 0.5rem 1.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+  margin-top: 0;
+  padding-top: 0;
+}
+.addButton:hover {
+  background: linear-gradient(90deg, #ff5722 0%, #ff9800 100%);
+  transform: scale(1.05);
+}
+.qtyControls {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.qtyBtn {
+  background: #18181b;
+  color: #ff9800;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.25rem 0.75rem;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.qtyBtn:hover {
+  background: #ff9800;
+  color: #fff;
+}
+.qty {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #fff;
+  min-width: 2rem;
+  text-align: center;
+}
+.removeBtn {
+  background: #ef4444;
+  color: #fff;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.95rem;
+  font-weight: bold;
+  margin-left: 0.5rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.removeBtn:hover {
+  background: #b91c1c;
+}
+@media (max-width: 600px) {
+  .menuCard {
+    width: 80vw;
+    min-width: 80vw;
+    max-width: 80vw;
+    height: 340px;
+    min-height: 340px;
+    max-height: 340px;
+  }
+}
+
+.menuCardExpanded {
+  background: #232323;
+  border-radius: 1.25rem;
+  box-shadow: 0 2px 16px 0 rgba(255, 152, 0, 0.10);
+  padding: 1.25rem 1.25rem 1.25rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: box-shadow 0.2s, transform 0.2s, min-height 0.2s, max-height 0.2s, height 0.2s;
+  width: 260px;
+  min-width: 260px;
+  max-width: 260px;
+  min-height: 470px;
+  max-height: 1000px;
+  height: auto;
+  box-sizing: border-box;
+  justify-content: flex-start;
+  position: relative;
+  z-index: 2;
+}
+.toggleDescBtn {
+  background: none;
+  color: #fff;
+  border: none;
+  font-size: 0.95rem;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 0.2rem;
+  border-radius: 0.5rem;
+  padding: 0.35rem 1.1rem;
+  text-decoration: underline;
+  box-shadow: none;
+  transition: color 0.18s;
+}
+.toggleDescBtn:hover {
+  background: none;
+  color: #ff9800;
+}
+
+.menuCardStandard {
+  background: linear-gradient(to right, #000000, #0f172a, #000000);
+  border-radius: 1rem;
+  box-shadow: 0 2px 16px 0 rgba(255, 152, 0, 0.10);
+  padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: box-shadow 0.2s, transform 0.2s;
+  width: 100%;
+  min-width: 0;
+  max-width: 260px;
+  min-height: 400px;
+  max-height: 400px;
+  height: 400px;
+  box-sizing: border-box;
+  justify-content: space-between;
+  position: relative;
+  z-index: 2;
+}
+.menuDescFull {
+  color: #bdbdbd;
+  font-size: 0.95rem;
+  text-align: center;
+  white-space: pre-line;
+  word-break: break-word;
+  margin-bottom: 0;
+  width: 100%;
+  max-height: 20em;
+  overflow-y: auto;
+}
+.menuCardStandard > * {
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+@media (max-width: 800px) {
+  .menuCardStandard {
+    width: 80vw;
+    min-width: 80vw;
+    max-width: 80vw;
+  }
+}
+
+.addedAnimate {
+  animation: addToCartPop 0.5s cubic-bezier(0.4, 0.8, 0.4, 1);
+}
+
+@keyframes addToCartPop {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(255,152,0,0.0);
+  }
+  40% {
+    transform: scale(1.08);
+    box-shadow: 0 0 16px 4px rgba(255,152,0,0.18);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(255,152,0,0.0);
+  }
+} 
