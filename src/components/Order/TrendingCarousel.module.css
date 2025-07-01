@@ -13,19 +13,26 @@
   position: relative;
   flex-shrink: 0;
   width: 200px;
+  height: 370px;
   background: radial-gradient(circle, #740505 1%, #000000 80%);
   border-radius: 1.25rem;
   box-shadow: 0 2px 16px 0 rgba(255, 152, 0, 0.10);
   border: 1px solid #232323;
-  padding: 1rem 1rem 1.25rem 1rem;
+  padding: 1rem 1rem 2.5rem 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  transition: box-shadow 0.2s, transform 0.2s;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  animation: cardEntrance 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .card:hover {
-  box-shadow: 0 8px 32px 0 rgba(255, 152, 0, 0.18);
-  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 12px 32px 0 rgba(255, 152, 0, 0.25);
+  transform: translateY(-8px) scale(1.02);
+  border: 1px solid rgba(255, 152, 0, 0.3);
+}
+.card:active {
+  transform: translateY(-4px) scale(1.01);
+  transition: all 0.1s ease;
 }
 .cardImage {
   width: 100%;
@@ -35,6 +42,11 @@
   border-radius: 1rem;
   margin-bottom: 0.75rem;
   background: #18181b;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.card:hover .cardImage {
+  transform: scale(1.05);
+  box-shadow: 0 8px 24px rgba(255, 152, 0, 0.2);
 }
 .cardTitleRow {
   display: flex;
@@ -52,6 +64,10 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  transition: color 0.2s ease;
+}
+.card:hover .cardTitle {
+  color: #ffd700;
 }
 .cardPrice {
   color: #facc15;
@@ -63,6 +79,12 @@
   border-radius: 0.75rem;
   padding: 0.08rem 0.6rem;
   pointer-events: auto;
+  transition: all 0.2s ease;
+}
+.card:hover .cardPrice {
+  background: rgba(255, 152, 0, 0.2);
+  color: #ffd700;
+  transform: scale(1.05);
 }
 .cardTags {
   display: flex;
@@ -77,27 +99,45 @@
   font-weight: 600;
   border-radius: 9999px;
   padding: 0.15rem 0.75rem;
+  transition: all 0.2s ease;
+}
+.card:hover .cardTag {
+  background: #16a34a33;
+  transform: scale(1.05);
 }
 .cardDesc {
   color: #bdbdbd;
-  font-size: 0.85rem;
+  font-size: 0.95rem;
   margin-bottom: 0.75rem;
   text-align: center;
-  min-height: 2.2em;
+  min-height: 7.2em;
+  max-height: 9.8em;
+  overflow-y: auto;
+  display: -webkit-box;
+  -webkit-line-clamp: 7;
+  -webkit-box-orient: vertical;
+  line-height: 1.4;
+  flex: 1;
+  transition: color 0.2s ease;
+  scrollbar-width: thin;
+}
+.card:hover .cardDesc {
+  color: #d1d5db;
 }
 .cardBottomRow {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: space-between;
   width: 100%;
   position: absolute;
   left: 0;
-  bottom: 0.1rem;
+  bottom: 0.4rem;
   pointer-events: none;
   z-index: 1;
-  padding: 0;
+  padding: 0 0.7rem;
   box-sizing: border-box;
+  margin-top: auto;
 }
 .addButtonFloating {
   background: #000;
@@ -112,32 +152,83 @@
   font-size: 1.25rem;
   box-shadow: 0 2px 8px 0 rgba(255, 152, 0, 0.18);
   cursor: pointer;
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  transition: background 0.2s, transform 0.2s;
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   z-index: 2;
   pointer-events: auto;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.addButtonFloating::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 152, 0, 0.3);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.3s, height 0.3s;
+}
+.addButtonFloating:hover::before {
+  width: 100%;
+  height: 100%;
 }
 .addButtonFloating:hover {
   background: #18181b;
-  transform: scale(1.08);
+  transform: scale(1.15) rotate(90deg);
+  box-shadow: 0 8px 24px rgba(255, 152, 0, 0.4);
+}
+.addButtonFloating:active {
+  transform: scale(0.95) rotate(90deg);
+  transition: all 0.1s ease;
+}
+.addButtonFloating.added {
+  animation: addToCartPop 0.5s cubic-bezier(0.4, 0.8, 0.4, 1);
 }
 @media (max-width: 600px) {
-  .addButtonFloating {
-    width: 32px;
-    height: 32px;
-    font-size: 1rem;
+  .carousel {
+    padding-bottom: 0.2rem;
+  }
+  .carouselInner {
+    gap: 0.5rem;
   }
   .card {
     width: 140px;
     min-width: 140px;
     max-width: 140px;
-    padding: 0.7rem 0.7rem 1rem 0.7rem;
+    height: 260px;
+    padding: 0.5rem 0.3rem 1.2rem 0.3rem;
+    border-radius: 0.8rem;
   }
   .cardImage {
-    max-width: 90px;
-    height: 70px;
+    max-width: 80px;
+    height: 54px;
+    border-radius: 0.6rem;
+    margin-bottom: 0.4rem;
+  }
+  .cardTitle {
+    font-size: 0.92rem;
+  }
+  .cardPrice {
+    font-size: 0.78rem;
+    padding: 0.05rem 0.4rem;
+  }
+  .cardDesc {
+    font-size: 0.82rem;
+    min-height: 3.5em;
+    max-height: 5em;
+    margin-bottom: 0.3rem;
+  }
+  .cardBottomRow {
+    bottom: 0.1rem;
+    padding: 0 0.2rem;
+  }
+  .addButtonFloating {
+    width: 32px;
+    height: 32px;
+    font-size: 1rem;
   }
 }
 .addButton {
@@ -149,10 +240,85 @@
   padding: 0.4rem 1.1rem;
   font-size: 0.95rem;
   cursor: pointer;
-  transition: background 0.2s, transform 0.2s;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   margin-top: auto;
+  position: relative;
+  overflow: hidden;
+}
+.addButton::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+.addButton:hover::before {
+  left: 100%;
 }
 .addButton:hover {
   background: linear-gradient(90deg, #ff5722 0%, #ff9800 100%);
-  transform: scale(1.05);
+  transform: scale(1.05) translateY(-2px);
+  box-shadow: 0 8px 24px rgba(255, 152, 0, 0.4);
+}
+.addButton:active {
+  transform: scale(0.98) translateY(0);
+  transition: all 0.1s ease;
+}
+
+/* Card entrance animation */
+@keyframes cardEntrance {
+  0% {
+    opacity: 0;
+    transform: translateY(30px) scale(0.9);
+  }
+  60% {
+    transform: translateY(-5px) scale(1.02);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Staggered entrance for carousel cards */
+.card:nth-child(1) { animation-delay: 0.1s; }
+.card:nth-child(2) { animation-delay: 0.2s; }
+.card:nth-child(3) { animation-delay: 0.3s; }
+.card:nth-child(4) { animation-delay: 0.4s; }
+.card:nth-child(5) { animation-delay: 0.5s; }
+.card:nth-child(6) { animation-delay: 0.6s; }
+
+/* Add to cart animation */
+@keyframes addToCartPop {
+  0% {
+    transform: scale(1) rotate(0deg);
+    box-shadow: 0 0 0 0 rgba(255,152,0,0.0);
+  }
+  40% {
+    transform: scale(1.2) rotate(180deg);
+    box-shadow: 0 0 16px 4px rgba(255,152,0,0.18);
+  }
+  100% {
+    transform: scale(1) rotate(360deg);
+    box-shadow: 0 0 0 0 rgba(255,152,0,0.0);
+  }
+}
+
+/* Loading shimmer effect for images */
+.cardImage.loading {
+  background: linear-gradient(90deg, #18181b 25%, #2a2a2a 50%, #18181b 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
 } 

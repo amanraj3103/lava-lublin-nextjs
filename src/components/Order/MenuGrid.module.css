@@ -42,6 +42,11 @@
   margin: 0 auto 1rem auto;
   background: #18181b;
   display: block;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.menuCard:hover .menuImage {
+  transform: scale(1.05);
+  box-shadow: 0 8px 24px rgba(255, 152, 0, 0.2);
 }
 .menuTitle {
   font-size: 1rem;
@@ -148,13 +153,33 @@
   padding: 0.5rem 1.5rem;
   font-size: 1rem;
   cursor: pointer;
-  transition: background 0.2s, transform 0.2s;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   margin-top: 0;
   padding-top: 0;
+  position: relative;
+  overflow: hidden;
+}
+.addButton::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+.addButton:hover::before {
+  left: 100%;
 }
 .addButton:hover {
   background: linear-gradient(90deg, #ff5722 0%, #ff9800 100%);
-  transform: scale(1.05);
+  transform: scale(1.05) translateY(-2px);
+  box-shadow: 0 8px 24px rgba(255, 152, 0, 0.4);
+}
+.addButton:active {
+  transform: scale(0.98) translateY(0);
+  transition: all 0.1s ease;
 }
 .qtyControls {
   display: flex;
@@ -170,11 +195,35 @@
   font-size: 1.1rem;
   font-weight: bold;
   cursor: pointer;
-  transition: background 0.2s;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+.qtyBtn::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 152, 0, 0.2);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.3s, height 0.3s;
+}
+.qtyBtn:hover::before {
+  width: 100%;
+  height: 100%;
 }
 .qtyBtn:hover {
   background: #ff9800;
   color: #fff;
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(255, 152, 0, 0.3);
+}
+.qtyBtn:active {
+  transform: scale(0.95);
+  transition: all 0.1s ease;
 }
 .qty {
   font-size: 1.1rem;
@@ -182,6 +231,22 @@
   color: #fff;
   min-width: 2rem;
   text-align: center;
+  transition: all 0.2s ease;
+}
+.qty.updated {
+  animation: quantityUpdate 0.3s ease;
+}
+@keyframes quantityUpdate {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+    color: #16a34a;
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 .removeBtn {
   background: #ef4444;
@@ -193,19 +258,75 @@
   font-weight: bold;
   margin-left: 0.5rem;
   cursor: pointer;
-  transition: background 0.2s;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+.removeBtn::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.3s, height 0.3s;
+}
+.removeBtn:hover::before {
+  width: 100%;
+  height: 100%;
 }
 .removeBtn:hover {
   background: #b91c1c;
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.4);
+}
+.removeBtn:active {
+  transform: scale(0.95);
+  transition: all 0.1s ease;
 }
 @media (max-width: 600px) {
-  .menuCard {
-    width: 80vw;
-    min-width: 80vw;
-    max-width: 80vw;
-    height: 340px;
-    min-height: 340px;
-    max-height: 340px;
+  .menuGrid {
+    padding-bottom: 0.2rem;
+    height: auto;
+  }
+  .menuGridInner {
+    gap: 0.5rem;
+  }
+  .menuCard, .menuCardStandard {
+    width: 140px;
+    min-width: 140px;
+    max-width: 140px;
+    height: 220px;
+    padding: 0.5rem 0.3rem 1.2rem 0.3rem;
+    border-radius: 0.8rem;
+  }
+  .menuImage {
+    max-width: 80px;
+    height: 54px;
+    border-radius: 0.6rem;
+    margin-bottom: 0.4rem;
+  }
+  .menuTitle {
+    font-size: 0.92rem;
+  }
+  .menuPrice {
+    font-size: 0.78rem;
+  }
+  .menuDesc, .menuDescFull {
+    font-size: 0.82rem;
+    max-height: 3.5em;
+    margin-bottom: 0.3rem;
+  }
+  .addButton {
+    font-size: 0.92rem;
+    padding: 0.3rem 0.7rem;
+  }
+  .qtyBtn, .removeBtn {
+    font-size: 0.85rem;
+    padding: 0.12rem 0.5rem;
   }
 }
 
@@ -256,7 +377,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  transition: box-shadow 0.2s, transform 0.2s;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   width: 100%;
   min-width: 0;
   max-width: 260px;
@@ -267,6 +388,16 @@
   justify-content: space-between;
   position: relative;
   z-index: 2;
+  animation: cardEntrance 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.menuCardStandard:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 12px 32px 0 rgba(255, 152, 0, 0.25);
+  border: 1px solid rgba(255, 152, 0, 0.3);
+}
+.menuCardStandard:active {
+  transform: translateY(-4px) scale(1.01);
+  transition: all 0.1s ease;
 }
 .menuDescFull {
   color: #bdbdbd;
@@ -310,5 +441,58 @@
   100% {
     transform: scale(1);
     box-shadow: 0 0 0 0 rgba(255,152,0,0.0);
+  }
+}
+
+/* Card entrance animation */
+@keyframes cardEntrance {
+  0% {
+    opacity: 0;
+    transform: translateY(30px) scale(0.9);
+  }
+  60% {
+    transform: translateY(-5px) scale(1.02);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Staggered entrance for multiple cards */
+.menuCardStandard:nth-child(1) { animation-delay: 0.1s; }
+.menuCardStandard:nth-child(2) { animation-delay: 0.2s; }
+.menuCardStandard:nth-child(3) { animation-delay: 0.3s; }
+.menuCardStandard:nth-child(4) { animation-delay: 0.4s; }
+.menuCardStandard:nth-child(5) { animation-delay: 0.5s; }
+.menuCardStandard:nth-child(6) { animation-delay: 0.6s; }
+
+/* Pulse animation for empty cart state */
+.emptyCart {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 0.7;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* Loading shimmer effect for images */
+.menuImage.loading {
+  background: linear-gradient(90deg, #18181b 25%, #2a2a2a 50%, #18181b 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
   }
 } 

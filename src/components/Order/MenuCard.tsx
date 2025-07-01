@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import styles from './MenuGrid.module.css';
 import { CartIconRefContext } from './Header';
 
@@ -39,17 +39,43 @@ interface MenuCardProps {
 export default function MenuCard({ item, cartItem, onAdd, onRemove, onUpdateQuantity }: MenuCardProps) {
   const cartIconRef = useContext(CartIconRefContext);
   const [imgRef, setImgRef] = useState<HTMLImageElement | null>(null);
+  const [isImageLoading, setIsImageLoading] = useState(true);
+  const [isAnimating, setIsAnimating] = useState(false);
+  const [quantityAnimating, setQuantityAnimating] = useState(false);
 
   const handleAdd = (item: any) => {
     if (imgRef && cartIconRef?.current) {
       flyToCart(imgRef, cartIconRef.current);
     }
+    setIsAnimating(true);
     onAdd(item);
+    setTimeout(() => setIsAnimating(false), 500);
+  };
+
+  const handleQuantityUpdate = (id: string, newQuantity: number) => {
+    setQuantityAnimating(true);
+    onUpdateQuantity(id, newQuantity);
+    setTimeout(() => setQuantityAnimating(false), 300);
+  };
+
+  const handleImageLoad = () => {
+    setIsImageLoading(false);
+  };
+
+  const handleImageError = () => {
+    setIsImageLoading(false);
   };
 
   return (
-    <div className={styles.menuCardStandard}>
-      <img ref={setImgRef} src={item.image} alt={item.name} className={styles.menuImage} />
+    <div className={`${styles.menuCardStandard} ${isAnimating ? styles.addedAnimate : ''}`}>
+      <img 
+        ref={setImgRef} 
+        src={item.image} 
+        alt={item.name} 
+        className={`${styles.menuImage} ${isImageLoading ? styles.loading : ''}`}
+        onLoad={handleImageLoad}
+        onError={handleImageError}
+      />
       <div className={styles.menuTitle}>{item.name}</div>
       <div className={styles.menuPrice}>{item.price.toFixed(2)} PLN</div>
       <div className={styles.menuDescWrapper}>
@@ -57,13 +83,39 @@ export default function MenuCard({ item, cartItem, onAdd, onRemove, onUpdateQuan
       </div>
       <div className={styles.menuActions}>
         {!cartItem ? (
-          <button className={styles.addButton} onClick={() => handleAdd(item)}>Add to Cart</button>
+          <button 
+            className={styles.addButton} 
+            onClick={() => handleAdd(item)}
+            disabled={isAnimating}
+          >
+            {isAnimating ? 'Added!' : 'Add to Cart'}
+          </button>
         ) : (
           <div className={styles.qtyControls}>
-            <button className={styles.qtyBtn} onClick={() => onUpdateQuantity(item.id, cartItem.quantity - 1)}>-</button>
-            <span className={styles.qty}>{cartItem.quantity}</span>
-            <button className={styles.qtyBtn} onClick={() => onUpdateQuantity(item.id, cartItem.quantity + 1)}>+</button>
-            <button className={styles.removeBtn} onClick={() => onRemove(item.id)}>Remove</button>
+            <button 
+              className={styles.qtyBtn} 
+              onClick={() => handleQuantityUpdate(item.id, cartItem.quantity - 1)}
+              disabled={quantityAnimating}
+            >
+              -
+            </button>
+            <span className={`${styles.qty} ${quantityAnimating ? styles.updated : ''}`}>
+              {cartItem.quantity}
+            </span>
+            <button 
+              className={styles.qtyBtn} 
+              onClick={() => handleQuantityUpdate(item.id, cartItem.quantity + 1)}
+              disabled={quantityAnimating}
+            >
+              +
+            </button>
+            <button 
+              className={styles.removeBtn} 
+              onClick={() => onRemove(item.id)}
+              disabled={quantityAnimating}
+            >
+              Remove
+            </button>
           </div>
         )}
       </div>

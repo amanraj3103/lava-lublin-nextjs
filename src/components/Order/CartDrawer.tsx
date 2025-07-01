@@ -5,16 +5,17 @@ import styles from './CartDrawer.module.css';
 interface CartDrawerProps {
   open: boolean;
   onClose: () => void;
+  onCheckout: () => void;
   desktop?: boolean;
 }
 
-export default function CartDrawer({ open, onClose, desktop }: CartDrawerProps) {
+export default function CartDrawer({ open, onClose, onCheckout, desktop }: CartDrawerProps) {
   const { items, subtotal, updateQuantity, removeItem, clearCart } = useCart();
   if (!open && !desktop) return null;
   return (
-    <aside className={styles.cartDrawer}>
-      <div className={styles.cartTitle}>Your Cart</div>
-      <div className={styles.cartList}>
+    <aside className={styles.cartDrawer} style={{ minWidth: '16rem', maxWidth: '18rem', minHeight: '36rem', maxHeight: '90vh', display: 'flex', flexDirection: 'column' }}>
+      <div className={styles.cartTitle} style={{ marginBottom: '0.7rem' }}>Your Cart</div>
+      <div className={styles.cartList} style={{ flex: 1, overflowY: 'auto', minHeight: '16rem', marginBottom: '0.3rem' }}>
         {items.length === 0 ? (
           <div className={styles.emptyCart}>Your cart is empty.</div>
         ) : (
@@ -35,7 +36,7 @@ export default function CartDrawer({ open, onClose, desktop }: CartDrawerProps) 
           ))
         )}
       </div>
-      <div className={styles.cartFooter}>
+      <div className={styles.cartFooter} style={{ marginTop: 'auto' }}>
         <button
           className={styles.addMoreBtn}
           onClick={onClose}
@@ -44,7 +45,13 @@ export default function CartDrawer({ open, onClose, desktop }: CartDrawerProps) 
           + Add more
         </button>
         <div className={styles.subtotal}>Subtotal: <span>{subtotal.toFixed(2)} PLN</span></div>
-        <button className={styles.checkoutBtn} disabled={items.length === 0}>Checkout</button>
+        <button 
+          className={styles.checkoutBtn} 
+          disabled={items.length === 0}
+          onClick={onCheckout}
+        >
+          Checkout
+        </button>
         <button className={styles.clearBtn} onClick={clearCart} disabled={items.length === 0}>Clear Cart</button>
       </div>
     </aside>

@@ -351,4 +351,62 @@
   font-weight: bold !important;
   font-size: 1rem !important;
   letter-spacing: 0.5px !important;
+}
+
+@media (max-width: 600px) {
+  .hero-heading {
+    font-size: 1.3rem !important;
+    padding-left: 0.7rem !important;
+    padding-right: 0.7rem !important;
+    max-width: 95vw !important;
+  }
+  .hero-heading + p {
+    font-size: 0.95rem !important;
+    padding-left: 0.7rem !important;
+    padding-right: 0.7rem !important;
+  }
+  .hero-heading + p + div {
+    flex-direction: column !important;
+    gap: 0.5rem !important;
+  }
+  .menu-container {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)) !important;
+    gap: 0.3rem !important;
+    padding-left: 0.5rem !important;
+    padding-right: 0.5rem !important;
+  }
+  .menu-card {
+    min-width: 140px !important;
+    max-width: 140px !important;
+    padding-bottom: 0.7rem !important;
+  }
+  .menu-card img {
+    width: 90% !important;
+    height: 54px !important;
+  }
+  .menu-card h3 {
+    font-size: 0.95rem !important;
+  }
+  .menu-card p {
+    font-size: 0.7rem !important;
+    margin-bottom: 0.4rem !important;
+  }
+  .about-heading {
+    font-size: 1.3rem !important;
+  }
+  .about-description {
+    padding-left: 0.5rem !important;
+    padding-right: 0.5rem !important;
+    font-size: 0.95rem !important;
+  }
+  .about-visual-design {
+    flex-direction: column !important;
+    gap: 0.5rem !important;
+  }
+  .footer {
+    flex-direction: column !important;
+    gap: 0.5rem !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
 } 
