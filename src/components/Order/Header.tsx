@@ -4,7 +4,7 @@ import { useCart } from '../../context/CartContext';
 import styles from '../../app/order/page.module.css';
 import LanguageSwitcher from '../LanguageSwitcher';
 
-export const CartIconRefContext = React.createContext<React.RefObject<HTMLButtonElement> | null>(null);
+export const CartIconRefContext = React.createContext<React.RefObject<HTMLButtonElement | null> | null>(null);
 
 interface HeaderProps {
   setCartOpen: (open: boolean) => void;
