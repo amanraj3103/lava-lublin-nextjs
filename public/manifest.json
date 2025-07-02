@@ -1,0 +1,84 @@
+{
+  "name": "LAVA LUBLIN - Crispy Food, Hot Vibes",
+  "short_name": "LAVA LUBLIN",
+  "description": "Experience the perfect blend of crispy textures and bold flavors at Lava Lublin. Visit us for the best burgers, wraps, and street food in Lublin, Poland.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#f97316",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "en",
+  "dir": "ltr",
+  "categories": ["food", "restaurant", "lifestyle"],
+  "icons": [
+    {
+      "src": "/lava_icon.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/lava_icon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/lava_icon.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "LAVA LUBLIN Homepage"
+    },
+    {
+      "src": "/lava_icon.png",
+      "sizes": "750x1334",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "LAVA LUBLIN Mobile View"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Order Food",
+      "short_name": "Order",
+      "description": "Order food online from LAVA LUBLIN",
+      "url": "/order",
+      "icons": [
+        {
+          "src": "/lava_icon.png",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "View Menu",
+      "short_name": "Menu",
+      "description": "View our menu offerings",
+      "url": "/#menu",
+      "icons": [
+        {
+          "src": "/lava_icon.png",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "Find Us",
+      "short_name": "Location",
+      "description": "Find our restaurant location",
+      "url": "/#location",
+      "icons": [
+        {
+          "src": "/lava_icon.png",
+          "sizes": "96x96"
+        }
+      ]
+    }
+  ],
+  "related_applications": [],
+  "prefer_related_applications": false
+} 

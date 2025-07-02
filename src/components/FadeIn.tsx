@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { motion, easeOut } from 'framer-motion';
 import React from 'react';
 
 interface FadeInProps {
@@ -19,7 +19,7 @@ const FadeIn: React.FC<FadeInProps> = ({
   <motion.div
     initial={{ opacity: 0, y }}
     animate={{ opacity: 1, y: 0 }}
-    transition={{ delay, duration, ease: [0.25, 0.1, 0.25, 1] }}
+    transition={{ delay, duration, ease: easeOut }}
     className={className}
   >
     {children}
@@ -39,7 +39,7 @@ export const heroStaggerVariants = {
 
 export const heroChildVariants = {
   hidden: { opacity: 0, y: 40 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.25, 0.1, 0.25, 1] } },
+  show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: easeOut } },
 };
 
 export const HeroStaggerFadeIn: React.FC<{ children: React.ReactNode; className?: string }> = ({ children, className = '' }) => (

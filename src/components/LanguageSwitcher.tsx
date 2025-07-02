@@ -46,8 +46,14 @@ const LanguageSwitcher: React.FC = () => {
   }
 
   return (
-    <div className="relative group">
-      <button className="bg-transparent border-none flex items-center gap-2 text-white hover:text-orange-400 p-3">
+    <div className="relative group" role="navigation" aria-label="Language selection">
+      <button 
+        className="bg-transparent border-none flex items-center gap-2 text-white hover:text-orange-400 p-3"
+        aria-label={`Current language: ${languages.find(lang => lang.code === i18n.language)?.name || 'English'}`}
+        aria-expanded="false"
+        aria-haspopup="listbox"
+        aria-describedby="language-dropdown"
+      >
         <span className="text-2xl">
           {languages.find(lang => lang.code === i18n.language)?.flag || '🌐'}
         </span>
@@ -59,11 +65,19 @@ const LanguageSwitcher: React.FC = () => {
         </svg>
       </button>
       
-      <div className="absolute right-0 top-full mt-2 w-40 bg-gray-800 border border-gray-600 rounded shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all">
+      <div 
+        className="absolute right-0 top-full mt-2 w-40 bg-gray-800 border border-gray-600 rounded shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all"
+        id="language-dropdown"
+        role="listbox"
+        aria-label="Available languages"
+      >
         {languages.map((language) => (
           <button
             key={language.code}
             onClick={() => handleLanguageChange(language.code)}
+            role="option"
+            aria-selected={i18n.language === language.code}
+            aria-label={`Switch to ${language.name}`}
             className={`w-full flex items-center gap-2 px-4 py-3 text-left hover:bg-gray-700 ${
               i18n.language === language.code ? 'text-orange-400 bg-gray-700' : 'text-white'
             }`}

@@ -8,7 +8,7 @@ export const CartIconRefContext = React.createContext<React.RefObject<HTMLButton
 
 interface HeaderProps {
   setCartOpen: (open: boolean) => void;
-  cartIconRef: React.RefObject<HTMLButtonElement>;
+  cartIconRef: React.RefObject<HTMLButtonElement | null>;
 }
 
 export default function Header({ setCartOpen, cartIconRef }: HeaderProps) {

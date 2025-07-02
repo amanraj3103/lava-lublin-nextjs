@@ -1,20 +1,11 @@
 import React, { createContext, useContext, useState, ReactNode } from 'react';
-
-export type CartItem = {
-  id: number;
-  name: string;
-  price: number;
-  description: string;
-  image: string;
-  category: string;
-  quantity: number;
-};
+import type { CartItem } from '../types/Cart';
 
 type CartContextType = {
   items: CartItem[];
   addItem: (item: Omit<CartItem, 'quantity'>) => void;
-  removeItem: (id: number) => void;
-  updateQuantity: (id: number, quantity: number) => void;
+  removeItem: (id: string | number) => void;
+  updateQuantity: (id: string | number, quantity: number) => void;
   clearCart: () => void;
   total: number;
 };
@@ -36,15 +27,15 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
       if (existing) {
         return prev.map(i => i.id === item.id ? { ...i, quantity: i.quantity + 1 } : i);
       }
-      return [...prev, { ...item, quantity: 1 }];
+      return [...prev, { ...item, category: item.category ?? undefined, color: item.color ?? undefined, quantity: 1 }];
     });
   };
 
-  const removeItem = (id: number) => {
+  const removeItem = (id: string | number) => {
     setItems(prev => prev.filter(i => i.id !== id));
   };
 
-  const updateQuantity = (id: number, quantity: number) => {
+  const updateQuantity = (id: string | number, quantity: number) => {
     setItems(prev =>
       prev.map(i =>
         i.id === id ? { ...i, quantity: Math.max(1, quantity) } : i

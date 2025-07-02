@@ -1,28 +1,16 @@
 import React from 'react';
 import styles from './CartDrawer.module.css';
-
-interface Product {
-  id: string;
-  name: string;
-  price: number;
-  category: string;
-  image: string;
-  color: string;
-}
-
-interface CartItem extends Product {
-  quantity: number;
-}
+import type { Product, CartItem } from '../../types/Cart';
+import Image from 'next/image';
 
 interface RecommendationsPanelProps {
   products: Product[];
-  onAdd: (product: Product) => void;
-  cartItems: CartItem[];
+  onAdd: (product: CartItem) => void;
   onBack: () => void;
   onProceed: () => void;
 }
 
-export default function RecommendationsPanel({ products, onAdd, cartItems, onBack, onProceed }: RecommendationsPanelProps) {
+export default function RecommendationsPanel({ products, onAdd, onBack, onProceed }: RecommendationsPanelProps) {
   return (
     <aside className={styles.cartDrawer} style={{ minWidth: '16rem', maxWidth: '19rem', minHeight: '28rem', maxHeight: '70vh', display: 'flex', flexDirection: 'column', padding: '0.7rem 0.5rem 0.5rem 0.5rem' }}>
       <div style={{ display: 'flex', alignItems: 'center', marginBottom: '0.4rem' }}>
@@ -58,7 +46,7 @@ export default function RecommendationsPanel({ products, onAdd, cartItems, onBac
       <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '0.3rem', marginBottom: '1rem', overflowY: 'auto' }}>
         {products.map(product => (
           <div key={product.id} className={styles.cartItem} style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', background: 'rgba(255,255,255,0.01)', borderRadius: '0.5rem', padding: '0.32rem 0.5rem' }}>
-            <img src={product.image} alt={product.name} style={{ width: 30, height: 30, borderRadius: '0.4rem', objectFit: 'cover', background: '#18181b', flexShrink: 0 }} />
+            <Image src={product.image} alt={product.name} width={30} height={30} style={{ width: 30, height: 30, borderRadius: '0.4rem', objectFit: 'cover', background: '#18181b', flexShrink: 0 }} />
             <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', minWidth: 0 }}>
               <div style={{ fontWeight: 700, fontSize: '0.92rem', color: '#fff', lineHeight: 1.2, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{product.name}</div>
               <div style={{ fontSize: '0.85rem', color: '#bdbdbd', fontWeight: 400, marginTop: 1 }}>{product.price.toFixed(2)} PLN · {product.color}</div>

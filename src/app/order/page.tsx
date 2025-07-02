@@ -1,17 +1,24 @@
 "use client";
 
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, Suspense } from 'react';
 import { CartProvider, useCart } from '../../context/CartContext';
-import { useMenuData, MenuData } from '../../hooks/useMenuData';
+import { useMenuData, MenuData, MenuItem } from '../../hooks/useMenuData';
 import Header, { CartIconRefContext } from '../../components/Order/Header';
 import MenuGrid from '../../components/Order/MenuGrid';
-import CartDrawer from '../../components/Order/CartDrawer';
 import TrendingCarousel from '../../components/Order/TrendingCarousel';
 import CategoryNav from '../../components/Order/CategoryNav';
 import styles from './page.module.css';
-import OrderLoading from '../../components/Order/OrderLoading';
-import { InteractiveCheckout } from '../../components/ui/interactive-checkout';
-import RecommendationsPanel from '../../components/Order/RecommendationsPanel';
+// Dynamic imports for code splitting
+const CartDrawer = React.lazy(() => import('../../components/Order/CartDrawer'));
+const OrderLoading = React.lazy(() => import('../../components/Order/OrderLoading'));
+const RecommendationsPanel = React.lazy(() => import('../../components/Order/RecommendationsPanel'));
+
+// Loading fallback component
+const LoadingFallback = () => (
+  <div className={styles.orderMain} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '100vh', color: '#f97316', fontSize: '1.25rem' }}>
+    Loading...
+  </div>
+);
 
 export default function OrderPage() {
   const { data, loading, error } = useMenuData();
@@ -22,7 +29,11 @@ export default function OrderPage() {
   const cartIconRef = useRef<HTMLButtonElement>(null);
 
   if (loading) {
-    return <OrderLoading />;
+    return (
+      <Suspense fallback={<LoadingFallback />}>
+        <OrderLoading />
+      </Suspense>
+    );
   }
   if (error || !data) {
     return <div className={styles.orderMain} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '100vh', color: '#ef4444', fontSize: '1.25rem' }}>Failed to load menu.</div>;
@@ -56,12 +67,11 @@ function OrderPageContent({ data, activeCategory, setActiveCategory, cartOpen, s
   checkoutOpen: boolean;
   setCheckoutOpen: React.Dispatch<React.SetStateAction<boolean>>;
   sectionRefs: React.MutableRefObject<Record<string, HTMLDivElement | null>>;
-  cartIconRef: React.RefObject<HTMLButtonElement>;
+  cartIconRef: React.RefObject<HTMLButtonElement | null>;
 }) {
   const cart = useCart();
   const [isMobile, setIsMobile] = useState(false);
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
-  const [recommendationCart, setRecommendationCart] = useState([]);
 
   // Handle responsive behavior
   useEffect(() => {
@@ -124,17 +134,6 @@ function OrderPageContent({ data, activeCategory, setActiveCategory, cartOpen, s
     color: item.tags?.includes('drink') ? 'Beverage' : 'Sauce'
   }));
 
-  // Add to recommendations cart
-  const handleAddRecommendation = (product) => {
-    setRecommendationCart((current) => {
-      const existing = current.find(item => item.id === product.id);
-      if (existing) {
-        return current.map(item => item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item);
-      }
-      return [...current, { ...product, quantity: 1 }];
-    });
-  };
-
   // Mobile Category Dropdown Component
   const MobileCategoryDropdown = () => (
     <div className={styles.mobileCategoryNav}>
@@ -174,8 +173,60 @@ function OrderPageContent({ data, activeCategory, setActiveCategory, cartOpen, s
     </div>
   );
 
+  // Generate structured data for menu items
+  const generateMenuStructuredData = () => {
+    const menuItems = data.categories.flatMap(cat => cat.items);
+    type NutritionMenuItem = MenuItem & { nutrition: { calories: string, protein: string, fat: string, carbs: string } };
+    const hasNutrition = (item: MenuItem): item is NutritionMenuItem =>
+      typeof (item as NutritionMenuItem).nutrition === 'object' && (item as NutritionMenuItem).nutrition !== null;
+    return {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "name": "LAVA LUBLIN Menu",
+      "description": "Complete menu of burgers, wraps, and street food at LAVA LUBLIN",
+      "url": "https://lavalublin.pl/order",
+      "numberOfItems": menuItems.length,
+      "itemListElement": menuItems.map((item, index) => {
+        return {
+          "@type": "ListItem",
+          "position": index + 1,
+          "item": {
+            "@type": "MenuItem",
+            "name": item.name,
+            "description": item.description || `${item.name} from LAVA LUBLIN`,
+            "offers": {
+              "@type": "Offer",
+              "price": item.price,
+              "priceCurrency": "PLN",
+              "availability": "https://schema.org/InStock"
+            },
+            "image": `https://lavalublin.pl${item.image}`,
+            "category": item.category || "Food",
+            ...(hasNutrition(item) ? {
+              "nutrition": {
+                "@type": "NutritionInformation",
+                "calories": item.nutrition.calories,
+                "proteinContent": item.nutrition.protein,
+                "fatContent": item.nutrition.fat,
+                "carbohydrateContent": item.nutrition.carbs
+              }
+            } : {})
+          }
+        }
+      })
+    };
+  };
+
   return (
     <div className={styles.orderMain}>
+      {/* Structured Data for Menu Items */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(generateMenuStructuredData())
+        }}
+      />
+      
       <Header setCartOpen={setCartOpen} cartIconRef={cartIconRef} />
       
       {/* Mobile Category Dropdown - sticky below header, only show on mobile */}
@@ -203,18 +254,27 @@ function OrderPageContent({ data, activeCategory, setActiveCategory, cartOpen, s
           )}
           
           {/* Menu Categories */}
-          {filteredCategories.map((cat) => (
-            <div key={cat.id} ref={(el) => { sectionRefs.current[cat.id] = el; }} id={cat.id} className={styles.section}>
-              <h2 className={styles.sectionTitle}>{cat.name}</h2>
-              <MenuGrid
-                items={cat.items}
-                cartItems={cart.items}
-                onAdd={item => cart.addItem({ ...item, quantity: 1 })}
-                onRemove={cart.removeItem}
-                onUpdateQuantity={cart.updateQuantity}
-              />
-            </div>
-          ))}
+          {filteredCategories.map((cat) => {
+            // Merge cart items with full menu item data for this category
+            const cartItemsForCategory: (MenuItem & { quantity: number })[] = cart.items
+              .map(cartItem => {
+                const menuItem = cat.items.find(item => item.id === cartItem.id);
+                return menuItem ? { ...menuItem, quantity: cartItem.quantity } : undefined;
+              })
+              .filter(Boolean) as (MenuItem & { quantity: number })[];
+            return (
+              <div key={cat.id} ref={(el) => { sectionRefs.current[cat.id] = el; }} id={cat.id} className={styles.section}>
+                <h2 className={styles.sectionTitle}>{cat.name}</h2>
+                <MenuGrid
+                  items={cat.items}
+                  cartItems={cartItemsForCategory}
+                  onAdd={item => cart.addItem({ ...item, quantity: 1 })}
+                  onRemove={cart.removeItem}
+                  onUpdateQuantity={cart.updateQuantity}
+                />
+              </div>
+            );
+          })}
         </section>
       </main>
       
@@ -222,11 +282,13 @@ function OrderPageContent({ data, activeCategory, setActiveCategory, cartOpen, s
       {cartOpen && (
         <div className={styles.cartModalOverlay} onClick={() => setCartOpen(false)}>
           <div className={styles.cartModal} onClick={e => e.stopPropagation()}>
-            <CartDrawer 
-              open={true} 
-              onClose={() => setCartOpen(false)} 
-              onCheckout={handleCheckout}
-            />
+            <Suspense fallback={<LoadingFallback />}>
+              <CartDrawer 
+                open={true} 
+                onClose={() => setCartOpen(false)} 
+                onCheckout={handleCheckout}
+              />
+            </Suspense>
           </div>
         </div>
       )}
@@ -251,23 +313,26 @@ function OrderPageContent({ data, activeCategory, setActiveCategory, cartOpen, s
             onClick={e => e.stopPropagation()}
           >
             <div style={{height: 'auto', display: 'flex', flexDirection: 'column', flex: 1}}>
-              <CartDrawer 
-                open={true} 
-                onClose={() => setCheckoutOpen(false)} 
-                onCheckout={() => {}} // No-op, already in checkout
-              />
+              <Suspense fallback={<LoadingFallback />}>
+                <CartDrawer 
+                  open={true} 
+                  onClose={() => setCheckoutOpen(false)} 
+                  onCheckout={() => {}} // No-op, already in checkout
+                />
+              </Suspense>
             </div>
             <div style={{height: 'auto', display: 'flex', flexDirection: 'column', flex: 1}}>
-              <RecommendationsPanel 
-                products={interactiveCheckoutProducts} 
-                onAdd={item => cart.addItem(item)}
-                cartItems={cart.items}
-                onBack={() => {
-                  setCheckoutOpen(false);
-                  setCartOpen(true);
-                }}
-                onProceed={() => { alert('Proceed to payment!'); }}
-              />
+              <Suspense fallback={<LoadingFallback />}>
+                <RecommendationsPanel 
+                  products={interactiveCheckoutProducts} 
+                  onAdd={item => cart.addItem({ ...item, quantity: 1 })}
+                  onBack={() => {
+                    setCheckoutOpen(false);
+                    setCartOpen(true);
+                  }}
+                  onProceed={() => { alert('Proceed to payment!'); }}
+                />
+              </Suspense>
             </div>
           </div>
         </div>

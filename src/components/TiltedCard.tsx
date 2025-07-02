@@ -8,11 +8,6 @@ const springValues = {
   mass: 1,
 };
 
-function isMobileDevice() {
-  if (typeof window === 'undefined') return false;
-  return window.innerWidth < 768 || /Mobi|Android/i.test(navigator.userAgent);
-}
-
 interface TiltedCardProps {
   imageSrc: string;
   altText?: string;

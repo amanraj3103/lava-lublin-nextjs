@@ -1,6 +1,8 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useContext } from 'react';
 import styles from './MenuGrid.module.css';
 import { CartIconRefContext } from './Header';
+import type { MenuItem } from '../../hooks/useMenuData';
+import Image from 'next/image';
 
 function flyToCart(imgEl: HTMLImageElement, cartIcon: HTMLElement) {
   const imgRect = imgEl.getBoundingClientRect();
@@ -29,9 +31,9 @@ function flyToCart(imgEl: HTMLImageElement, cartIcon: HTMLElement) {
 }
 
 interface MenuCardProps {
-  item: any;
-  cartItem?: any;
-  onAdd: (item: any) => void;
+  item: MenuItem;
+  cartItem?: MenuItem & { quantity: number };
+  onAdd: (item: MenuItem) => void;
   onRemove: (id: string) => void;
   onUpdateQuantity: (id: string, quantity: number) => void;
 }
@@ -43,7 +45,7 @@ export default function MenuCard({ item, cartItem, onAdd, onRemove, onUpdateQuan
   const [isAnimating, setIsAnimating] = useState(false);
   const [quantityAnimating, setQuantityAnimating] = useState(false);
 
-  const handleAdd = (item: any) => {
+  const handleAdd = (item: MenuItem) => {
     if (imgRef && cartIconRef?.current) {
       flyToCart(imgRef, cartIconRef.current);
     }
@@ -68,13 +70,17 @@ export default function MenuCard({ item, cartItem, onAdd, onRemove, onUpdateQuan
 
   return (
     <div className={`${styles.menuCardStandard} ${isAnimating ? styles.addedAnimate : ''}`}>
-      <img 
-        ref={setImgRef} 
-        src={item.image} 
-        alt={item.name} 
+      <Image
+        ref={setImgRef}
+        src={item.image}
+        alt={item.name}
+        width={180}
+        height={120}
         className={`${styles.menuImage} ${isImageLoading ? styles.loading : ''}`}
         onLoad={handleImageLoad}
         onError={handleImageError}
+        placeholder="blur"
+        blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/w8AAn8B9n6l9wAAAABJRU5ErkJggg=="
       />
       <div className={styles.menuTitle}>{item.name}</div>
       <div className={styles.menuPrice}>{item.price.toFixed(2)} PLN</div>
@@ -87,6 +93,8 @@ export default function MenuCard({ item, cartItem, onAdd, onRemove, onUpdateQuan
             className={styles.addButton} 
             onClick={() => handleAdd(item)}
             disabled={isAnimating}
+            aria-label={`Add ${item.name} to cart`}
+            aria-describedby={`item-${item.id}-description`}
           >
             {isAnimating ? 'Added!' : 'Add to Cart'}
           </button>
@@ -96,16 +104,24 @@ export default function MenuCard({ item, cartItem, onAdd, onRemove, onUpdateQuan
               className={styles.qtyBtn} 
               onClick={() => handleQuantityUpdate(item.id, cartItem.quantity - 1)}
               disabled={quantityAnimating}
+              aria-label={`Decrease quantity of ${item.name}`}
+              aria-describedby={`item-${item.id}-quantity`}
             >
               -
             </button>
-            <span className={`${styles.qty} ${quantityAnimating ? styles.updated : ''}`}>
+            <span 
+              className={`${styles.qty} ${quantityAnimating ? styles.updated : ''}`}
+              id={`item-${item.id}-quantity`}
+              aria-label={`Current quantity: ${cartItem.quantity}`}
+            >
               {cartItem.quantity}
             </span>
             <button 
               className={styles.qtyBtn} 
               onClick={() => handleQuantityUpdate(item.id, cartItem.quantity + 1)}
               disabled={quantityAnimating}
+              aria-label={`Increase quantity of ${item.name}`}
+              aria-describedby={`item-${item.id}-quantity`}
             >
               +
             </button>
@@ -113,11 +129,15 @@ export default function MenuCard({ item, cartItem, onAdd, onRemove, onUpdateQuan
               className={styles.removeBtn} 
               onClick={() => onRemove(item.id)}
               disabled={quantityAnimating}
+              aria-label={`Remove ${item.name} from cart`}
             >
               Remove
             </button>
           </div>
         )}
+      </div>
+      <div id={`item-${item.id}-description`} className="sr-only">
+        {item.description}
       </div>
     </div>
   );

@@ -11,6 +11,7 @@ export type MenuItem = {
   bestSeller?: boolean;
   trending?: boolean;
   recommendations?: string[];
+  category?: string;
 };
 
 export type MenuCategory = {
@@ -32,10 +33,18 @@ export function useMenuData() {
   useEffect(() => {
     setLoading(true);
     setTimeout(() => {
-      let menuFile = '../data/menu.en.json';
-      if (i18n.language === 'pl') menuFile = '../data/menu.json';
-      else if (i18n.language === 'uk') menuFile = '../data/menu.uk.json';
-      import(menuFile)
+      let menuImport;
+      switch (i18n.language) {
+        case 'pl':
+          menuImport = import('../data/menu.json');
+          break;
+        case 'uk':
+          menuImport = import('../data/menu.uk.json');
+          break;
+        default:
+          menuImport = import('../data/menu.en.json');
+      }
+      menuImport
         .then((mod) => {
           setData((mod.default || mod) as MenuData);
           setLoading(false);

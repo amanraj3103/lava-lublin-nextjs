@@ -2,6 +2,8 @@ import React, { useContext, useRef, useState } from 'react';
 import { useCart } from '../../context/CartContext';
 import styles from './TrendingCarousel.module.css';
 import { CartIconRefContext } from './Header';
+import Image from 'next/image';
+import type { MenuItem } from '../../hooks/useMenuData';
 
 function flyToCart(imgEl: HTMLImageElement, cartIcon: HTMLElement) {
   const imgRect = imgEl.getBoundingClientRect();
@@ -30,14 +32,7 @@ function flyToCart(imgEl: HTMLImageElement, cartIcon: HTMLElement) {
 }
 
 interface TrendingCarouselProps {
-  items: {
-    id: string;
-    name: string;
-    image: string;
-    price: number;
-    tags?: string[];
-    description?: string;
-  }[];
+  items: MenuItem[];
 }
 
 export default function TrendingCarousel({ items }: TrendingCarouselProps) {
@@ -47,7 +42,7 @@ export default function TrendingCarousel({ items }: TrendingCarouselProps) {
   const [animatingItems, setAnimatingItems] = useState<Set<string>>(new Set());
   const [imageLoadingStates, setImageLoadingStates] = useState<Set<string>>(new Set());
 
-  const handleAdd = (item: any, idx: number) => {
+  const handleAdd = (item: MenuItem, idx: number) => {
     if (imgRefs.current[idx] && cartIconRef?.current) {
       flyToCart(imgRefs.current[idx]!, cartIconRef.current);
     }
@@ -88,13 +83,17 @@ export default function TrendingCarousel({ items }: TrendingCarouselProps) {
       <div className={styles.carouselInner}>
         {items.map((item, idx) => (
           <div key={item.id} className={styles.card}>
-            <img 
-              ref={el => (imgRefs.current[idx] = el)} 
+            <Image 
+              ref={el => { imgRefs.current[idx] = el; }} 
               src={item.image} 
               alt={item.name} 
+              width={180}
+              height={120}
               className={`${styles.cardImage} ${imageLoadingStates.has(item.id) ? styles.loading : ''}`}
               onLoad={() => handleImageLoad(item.id)}
               onError={() => handleImageError(item.id)}
+              placeholder="blur"
+              blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/w8AAn8B9n6l9wAAAABJRU5ErkJggg=="
             />
             <div className={styles.cardTitleRow}>
               <span className={styles.cardTitle}>{item.name}</span>

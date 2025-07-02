@@ -1,13 +1,5 @@
 import React, { createContext, useContext, useReducer, ReactNode } from 'react';
-
-export type CartItem = {
-  id: string;
-  name: string;
-  price: number;
-  image: string;
-  quantity: number;
-  tags?: string[];
-};
+import type { CartItem } from '../types/Cart';
 
 type CartState = {
   items: CartItem[];
@@ -15,15 +7,15 @@ type CartState = {
 
 type CartAction =
   | { type: 'ADD_ITEM'; item: CartItem }
-  | { type: 'REMOVE_ITEM'; id: string }
-  | { type: 'UPDATE_QUANTITY'; id: string; quantity: number }
+  | { type: 'REMOVE_ITEM'; id: string | number }
+  | { type: 'UPDATE_QUANTITY'; id: string | number; quantity: number }
   | { type: 'CLEAR_CART' };
 
 const CartContext = createContext<{
   items: CartItem[];
   addItem: (item: CartItem) => void;
-  removeItem: (id: string) => void;
-  updateQuantity: (id: string, quantity: number) => void;
+  removeItem: (id: string | number) => void;
+  updateQuantity: (id: string | number, quantity: number) => void;
   clearCart: () => void;
   subtotal: number;
 } | undefined>(undefined);
@@ -60,9 +52,9 @@ export function CartProvider({ children }: { children: ReactNode }) {
   const [state, dispatch] = useReducer(cartReducer, { items: [] });
   const subtotal = state.items.reduce((sum, i) => sum + i.price * i.quantity, 0);
 
-  const addItem = (item: CartItem) => dispatch({ type: 'ADD_ITEM', item });
-  const removeItem = (id: string) => dispatch({ type: 'REMOVE_ITEM', id });
-  const updateQuantity = (id: string, quantity: number) => dispatch({ type: 'UPDATE_QUANTITY', id, quantity });
+  const addItem = (item: CartItem) => dispatch({ type: 'ADD_ITEM', item: { ...item, category: item.category ?? undefined, color: item.color ?? undefined } });
+  const removeItem = (id: string | number) => dispatch({ type: 'REMOVE_ITEM', id });
+  const updateQuantity = (id: string | number, quantity: number) => dispatch({ type: 'UPDATE_QUANTITY', id, quantity });
   const clearCart = () => dispatch({ type: 'CLEAR_CART' });
 
   return (

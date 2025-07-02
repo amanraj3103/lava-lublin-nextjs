@@ -286,7 +286,8 @@ function InteractiveCheckout({
     );
 }
 
-export { InteractiveCheckout, Product }
+export { InteractiveCheckout };
+export type { Product };
 
 const defaultProducts: Product[] = [
     {
