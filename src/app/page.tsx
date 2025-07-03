@@ -7,7 +7,6 @@ import { useTranslation } from 'react-i18next';
 import LanguageSwitcher from '../components/LanguageSwitcher';
 import GoogleReviews from '../components/GoogleReviews';
 import './home.css';
-import footerStyles from '../components/footer-7.module.css';
 import Footer from '../components/Footer';
 
 // Dynamic imports for code splitting

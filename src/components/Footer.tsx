@@ -43,9 +43,9 @@ export default function Footer() {
       <div className={styles.container}>
         <div className={styles.top}>
           <div className={styles.brandSection}>
-            <a href="/" className={styles.logoLink} aria-label="LAVA LUBLIN homepage">
-              <span className={styles.logoTitle}>LAVA LUBLIN</span>
-            </a>
+            <Link href="/" className={styles.logoLink} aria-label="Go to homepage">
+              <img src="/lava_icon.png" alt="Lava Lublin logo" className={styles.logoImg} />
+            </Link>
             <p className={styles.description}>
               Experience the perfect blend of crispy textures and bold flavors. We serve the finest burgers, wraps, and comfort food in Lublin, Poland. Made fresh, served hot, always delicious.
             </p>
