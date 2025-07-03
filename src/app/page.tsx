@@ -5,7 +5,10 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useTranslation } from 'react-i18next';
 import LanguageSwitcher from '../components/LanguageSwitcher';
+import GoogleReviews from '../components/GoogleReviews';
 import './home.css';
+import footerStyles from '../components/footer-7.module.css';
+import Footer from '../components/Footer';
 
 // Dynamic imports for code splitting
 const TiltedCard = React.lazy(() => import('../components/TiltedCard'));
@@ -73,22 +76,6 @@ function Navigation() {
               {item.label}
             </button>
           ))}
-          <Link 
-            href="/order" 
-            className="bg-orange-500 px-4 py-2 rounded-full font-semibold hover:bg-orange-600 transition-colors"
-            role="menuitem"
-            aria-label="Order food online"
-          >
-            Order Online
-          </Link>
-          <Link 
-            href="/blog" 
-            className="text-white hover:text-orange-400 transition-colors"
-            role="menuitem"
-            aria-label="Read our blog and news"
-          >
-            Blog
-          </Link>
         </div>
 
         {/* Mobile Menu Button */}
@@ -277,18 +264,18 @@ export default function Home() {
                 </motion.p>
                 <motion.div className="flex flex-col sm:flex-row gap-4" variants={heroChildVariants}>
                   <Link 
-                    href="/order" 
-                    className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 rounded-full font-bold text-lg transition-all duration-300 transform hover:scale-105"
-                    aria-label="Order food online from LAVA LUBLIN"
-                  >
-                    Order Now
-                  </Link>
-                  <Link 
                     href="#menu" 
                     className="bg-red-600 hover:bg-red-700 text-white px-8 py-4 rounded-full font-bold text-lg transition-all duration-300 transform hover:scale-105"
                     aria-label="View our menu offerings"
                   >
                     View Menu
+                  </Link>
+                  <Link 
+                    href="/order" 
+                    className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 rounded-full font-bold text-lg transition-all duration-300 transform hover:scale-105"
+                    aria-label="Order food online from LAVA LUBLIN"
+                  >
+                    Order Now
                   </Link>
                   <Link 
                     href="#location" 
@@ -359,113 +346,17 @@ export default function Home() {
             </div>
           </section>
 
-          {/* Testimonials Section */}
+          {/* Google Reviews Section */}
           <section className="py-24 bg-gradient-to-r from-gray-900 to-black" aria-labelledby="testimonials-title">
             <div className="container mx-auto px-4">
               <h2 id="testimonials-title" className="text-4xl md:text-5xl font-bold text-center mb-16 text-orange-500">
                 What Our Customers Say
               </h2>
-              <div className="grid md:grid-cols-3 gap-8">
-                <div className="bg-gray-800 p-6 rounded-lg">
-                  <div className="flex items-center mb-4">
-                    <div className="flex text-yellow-400">
-                      {[...Array(5)].map((_, i) => (
-                        <svg key={i} className="w-5 h-5 fill-current" viewBox="0 0 20 20">
-                          <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
-                        </svg>
-                      ))}
-                    </div>
-                  </div>
-                  <p className="text-gray-300 mb-4 italic">
-                    &quot;Amazing burgers! The crispy texture and bold flavors are exactly what I was looking for. Highly recommend!&quot;
-                  </p>
-                  <div className="flex items-center">
-                    <div className="w-10 h-10 bg-orange-500 rounded-full flex items-center justify-center text-white font-bold">
-                      AK
-                    </div>
-                    <div className="ml-3">
-                      <p className="text-white font-semibold">Anna K.</p>
-                      <p className="text-gray-400 text-sm">Regular Customer</p>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="bg-gray-800 p-6 rounded-lg">
-                  <div className="flex items-center mb-4">
-                    <div className="flex text-yellow-400">
-                      {[...Array(5)].map((_, i) => (
-                        <svg key={i} className="w-5 h-5 fill-current" viewBox="0 0 20 20">
-                          <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
-                        </svg>
-                      ))}
-                    </div>
-                  </div>
-                  <p className="text-gray-300 mb-4 italic">
-                    &quot;Best wraps in Lublin! Fresh ingredients and great service. Will definitely come back.&quot;
-                  </p>
-                  <div className="flex items-center">
-                    <div className="w-10 h-10 bg-orange-500 rounded-full flex items-center justify-center text-white font-bold">
-                      MS
-                    </div>
-                    <div className="ml-3">
-                      <p className="text-white font-semibold">Marek S.</p>
-                      <p className="text-gray-400 text-sm">Food Blogger</p>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="bg-gray-800 p-6 rounded-lg">
-                  <div className="flex items-center mb-4">
-                    <div className="flex text-yellow-400">
-                      {[...Array(5)].map((_, i) => (
-                        <svg key={i} className="w-5 h-5 fill-current" viewBox="0 0 20 20">
-                          <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
-                        </svg>
-                      ))}
-                    </div>
-                  </div>
-                  <p className="text-gray-300 mb-4 italic">
-                    &quot;The golden wings are absolutely incredible! Perfect balance of crispy and juicy. A must-try!&quot;
-                  </p>
-                  <div className="flex items-center">
-                    <div className="w-10 h-10 bg-orange-500 rounded-full flex items-center justify-center text-white font-bold">
-                      JK
-                    </div>
-                    <div className="ml-3">
-                      <p className="text-white font-semibold">Jan K.</p>
-                      <p className="text-gray-400 text-sm">Local Resident</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* CTA Section */}
-              <div className="text-center mt-16">
-                <h3 className="text-2xl md:text-3xl font-bold text-white mb-6">
-                  Ready to Experience the Best Food in Lublin?
-                </h3>
-                <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <Link 
-                    href="/order" 
-                    className="bg-orange-500 px-8 py-4 rounded-full font-bold text-lg hover:bg-orange-600 transition-all duration-300 transform hover:scale-105 inline-flex items-center justify-center"
-                  >
-                    <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-2.5 5M7 13l2.5 5m6-5v6a2 2 0 01-2 2H9a2 2 0 01-2-2v-6m6 0V9a2 2 0 00-2-2H9a2 2 0 00-2 2v4.01" />
-                    </svg>
-                    Order Now
-                  </Link>
-                  <a 
-                    href="#location" 
-                    className="bg-red-600 px-8 py-4 rounded-full font-bold text-lg hover:bg-red-700 transition-all duration-300 transform hover:scale-105 inline-flex items-center justify-center"
-                  >
-                    <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                    </svg>
-                    Visit Us
-                  </a>
-                </div>
-              </div>
+              <GoogleReviews 
+                placeId="ChIJN1t_tDeuEmsRUsoyG83frY4"
+                apiKey={process.env.NEXT_PUBLIC_GOOGLE_PLACES_API_KEY || ''}
+                maxReviews={6}
+              />
             </div>
           </section>
 
@@ -622,101 +513,8 @@ export default function Home() {
               </div>
             </div>
           </section>
-
-          {/* Footer with Internal Links */}
-          <footer className="bg-black py-12 border-t border-gray-800" role="contentinfo">
-            <div className="container mx-auto px-4">
-              <div className="grid md:grid-cols-4 gap-8">
-                {/* Company Info */}
-                <div className="md:col-span-2">
-                  <h3 className="text-2xl font-bold text-orange-500 mb-4">LAVA LUBLIN</h3>
-                  <p className="text-gray-300 mb-4">
-                    Experience the perfect blend of crispy textures and bold flavors. 
-                    Visit us for the best burgers and wraps in Lublin, Poland.
-                  </p>
-                  <div className="flex space-x-4">
-                    <a 
-                      href="https://www.instagram.com/lava_lublin" 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className="text-gray-400 hover:text-orange-500 transition-colors"
-                      aria-label="Follow us on Instagram"
-                    >
-                      <Image 
-                        src="/instagram_icon.png" 
-                        width={24} 
-                        height={24} 
-                        alt="Instagram" 
-                        className="w-6 h-6" 
-                      />
-                    </a>
-                  </div>
-                </div>
-
-                {/* Quick Links */}
-                <div>
-                  <h4 className="text-lg font-semibold text-white mb-4">Quick Links</h4>
-                  <ul className="space-y-2">
-                    <li>
-                      <Link href="/" className="text-gray-300 hover:text-orange-500 transition-colors">
-                        Home
-                      </Link>
-                    </li>
-                    <li>
-                      <Link href="/order" className="text-gray-300 hover:text-orange-500 transition-colors">
-                        Order Online
-                      </Link>
-                    </li>
-                    <li>
-                      <Link href="/blog" className="text-gray-300 hover:text-orange-500 transition-colors">
-                        Blog & News
-                      </Link>
-                    </li>
-                    <li>
-                      <a href="#menu" className="text-gray-300 hover:text-orange-500 transition-colors">
-                        Menu
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-
-                {/* Contact Info */}
-                <div>
-                  <h4 className="text-lg font-semibold text-white mb-4">Contact</h4>
-                  <ul className="space-y-2 text-gray-300">
-                    <li>
-                      <a href="tel:+48729397306" className="hover:text-orange-500 transition-colors">
-                        +48 729 397 306
-                      </a>
-                    </li>
-                    <li>
-                      <a href="mailto:info@lavalublin.pl" className="hover:text-orange-500 transition-colors">
-                        info@lavalublin.pl
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#location" className="hover:text-orange-500 transition-colors">
-                        ul.Nadbystrzycka 45/A
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-
-              <div className="border-t border-gray-800 mt-8 pt-8 text-center">
-                <p className="text-gray-400">
-                  © 2025 LAVA LUBLIN. All rights reserved. | 
-                  <Link href="/privacy" className="text-gray-400 hover:text-orange-500 transition-colors ml-2">
-                    Privacy Policy
-                  </Link> | 
-                  <Link href="/terms" className="text-gray-400 hover:text-orange-500 transition-colors ml-2">
-                    Terms of Service
-                  </Link>
-                </p>
-              </div>
-            </div>
-          </footer>
         </main>
+        <Footer />
       </div>
     </ClientOnly>
   );

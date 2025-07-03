@@ -37,7 +37,7 @@ const LanguageSwitcher: React.FC = () => {
         <button className="bg-transparent border-none flex items-center gap-2 text-white hover:text-orange-400 p-3">
           <span className="text-2xl">🌐</span>
           <span className="hidden sm:inline text-2xl">EN</span>
-          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ width: '1.25rem', height: '1.25rem' }}>
+          <svg className="w-6 h-6" fill="none" stroke="#fff" viewBox="0 0 24 24" style={{ width: '1.25rem', height: '1.25rem' }}>
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
           </svg>
         </button>
@@ -60,7 +60,7 @@ const LanguageSwitcher: React.FC = () => {
         <span className="hidden sm:inline text-2xl">
           {languages.find(lang => lang.code === i18n.language)?.name || 'EN'}
         </span>
-        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ width: '1.25rem', height: '1.25rem' }}>
+        <svg className="w-6 h-6" fill="none" stroke="#fff" viewBox="0 0 24 24" style={{ width: '1.25rem', height: '1.25rem' }}>
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
         </svg>
       </button>

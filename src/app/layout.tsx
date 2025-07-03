@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Providers } from "./providers";
 import Script from "next/script";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://lavalublin.pl"),
@@ -370,6 +371,7 @@ export default function RootLayout({
         </a>
         <Providers>
           {children}
+          <SpeedInsights />
         </Providers>
       </body>
     </html>

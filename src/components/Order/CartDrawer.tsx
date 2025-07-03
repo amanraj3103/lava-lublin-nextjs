@@ -28,29 +28,32 @@ export default function CartDrawer({ open, onClose, onCheckout, desktop }: CartD
           <div className={styles.emptyCart} role="status" aria-live="polite">Your cart is empty.</div>
         ) : (
           items.map(item => (
-            <div key={item.id} className={styles.cartItem} role="listitem">
+            <div key={item.id} className={styles.cartItem} role="listitem" style={{ display: 'flex', alignItems: 'flex-start', gap: '0.7rem', padding: '0.5rem 0' }}>
               <Image src={item.image} alt={item.name} className={styles.cartItemImage} width={50} height={50} />
-              <div className={styles.cartItemInfo}>
-                <div className={styles.cartItemName} id={`cart-item-${item.id}-name`}>{item.name}</div>
-                <div className={styles.cartItemPrice}>{item.price.toFixed(2)} PLN</div>
-                <div className={styles.cartItemQty}>
-                  <button 
-                    className={styles.qtyBtn} 
-                    onClick={() => updateQuantity(item.id, item.quantity - 1)}
-                    aria-label={`Decrease quantity of ${item.name}`}
-                    aria-describedby={`cart-item-${item.id}-quantity`}
-                  >-</button>
-                  <span className={styles.qty} id={`cart-item-${item.id}-quantity`} aria-label={`Quantity: ${item.quantity}`}>{item.quantity}</span>
-                  <button 
-                    className={styles.qtyBtn} 
-                    onClick={() => updateQuantity(item.id, item.quantity + 1)}
-                    aria-label={`Increase quantity of ${item.name}`}
-                    aria-describedby={`cart-item-${item.id}-quantity`}
-                  >+</button>
+              <div className={styles.cartItemInfo} style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '0.2rem' }}>
+                <div className={styles.cartItemName} id={`cart-item-${item.id}-name`} style={{ fontWeight: 700, fontSize: '1rem', color: '#fff', marginBottom: 2 }}>{item.name}</div>
+                <div className={styles.cartItemPrice} style={{ color: '#16a34a', fontWeight: 600, fontSize: '0.98rem', marginBottom: 2 }}>{item.price.toFixed(2)} PLN</div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginTop: 4 }}>
+                  <div className={styles.cartItemQty} style={{ display: 'flex', alignItems: 'center', gap: '0.2rem' }}>
+                    <button 
+                      className={styles.qtyBtn} 
+                      onClick={() => updateQuantity(item.id, item.quantity - 1)}
+                      aria-label={`Decrease quantity of ${item.name}`}
+                      aria-describedby={`cart-item-${item.id}-quantity`}
+                    >-</button>
+                    <span className={styles.qty} id={`cart-item-${item.id}-quantity`} aria-label={`Quantity: ${item.quantity}`}>{item.quantity}</span>
+                    <button 
+                      className={styles.qtyBtn} 
+                      onClick={() => updateQuantity(item.id, item.quantity + 1)}
+                      aria-label={`Increase quantity of ${item.name}`}
+                      aria-describedby={`cart-item-${item.id}-quantity`}
+                    >+</button>
+                  </div>
                   <button 
                     className={styles.removeBtn} 
                     onClick={() => removeItem(item.id)}
                     aria-label={`Remove ${item.name} from cart`}
+                    style={{ marginLeft: 8 }}
                   >Remove</button>
                 </div>
               </div>

@@ -1,0 +1,140 @@
+/* Modern, professional footer styles for LAVA LUBLIN */
+.footer {
+  background: #000;
+  color: #fff;
+  padding: 3rem 0 2rem 0;
+  font-family: 'Montserrat', sans-serif;
+}
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 0.75rem;
+}
+.top {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+@media (min-width: 900px) {
+  .top {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 3rem;
+  }
+}
+.brandSection {
+  flex: 1 1 260px;
+  min-width: 220px;
+  margin-bottom: 2rem;
+  padding-left: 0;
+  margin-left: 0;
+}
+.logoLink {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+  margin-bottom: 1.2rem;
+  padding-left: 0;
+  margin-left: 0;
+}
+.logoIcon {
+  width: 2.5rem;
+  height: 2.5rem;
+  background: linear-gradient(135deg, #ff9800, #ff5722);
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1.5rem;
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(255, 152, 0, 0.15);
+}
+.logoTitle {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: 0.03em;
+}
+.description {
+  color: #bbb;
+  font-size: 1.05rem;
+  max-width: 350px;
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+  text-align: justify;
+  padding-left: 0;
+  margin-left: 0;
+}
+.linksSection {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 2.5rem;
+  flex: 2 1 500px;
+}
+.linkColumn {
+  min-width: 140px;
+}
+.sectionTitle {
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-bottom: 1.1rem;
+  color: #fff;
+  letter-spacing: 0.01em;
+}
+.linkList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.linkItem {
+  margin-bottom: 0.7rem;
+}
+.link {
+  color: #bbb;
+  text-decoration: none;
+  font-size: 1.04rem;
+  font-weight: 500;
+  transition: color 0.2s, text-decoration 0.2s;
+  border-radius: 0.2rem;
+  outline: none;
+}
+.link:hover, .link:focus {
+  color: #fff;
+  text-decoration: underline;
+  background: rgba(255,255,255,0.07);
+}
+.bottom {
+  border-top: 1px solid #222;
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  font-size: 0.98rem;
+  color: #bbb;
+}
+@media (min-width: 700px) {
+  .bottom {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+.legalSection {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+.legalLink {
+  color: #bbb;
+  text-decoration: none;
+  transition: color 0.2s;
+  font-size: 1.01rem;
+}
+.legalLink:hover, .legalLink:focus {
+  color: #fff;
+  text-decoration: underline;
+} 

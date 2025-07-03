@@ -41,6 +41,7 @@ export default function TrendingCarousel({ items }: TrendingCarouselProps) {
   const imgRefs = useRef<(HTMLImageElement | null)[]>([]);
   const [animatingItems, setAnimatingItems] = useState<Set<string>>(new Set());
   const [imageLoadingStates, setImageLoadingStates] = useState<Set<string>>(new Set());
+  const [imageErrorStates, setImageErrorStates] = useState<{ [id: string]: boolean }>({});
 
   const handleAdd = (item: MenuItem, idx: number) => {
     if (imgRefs.current[idx] && cartIconRef?.current) {
@@ -71,6 +72,7 @@ export default function TrendingCarousel({ items }: TrendingCarouselProps) {
       newSet.delete(itemId);
       return newSet;
     });
+    setImageErrorStates(prev => ({ ...prev, [itemId]: true }));
   };
 
   // Initialize loading states for all items
@@ -83,18 +85,41 @@ export default function TrendingCarousel({ items }: TrendingCarouselProps) {
       <div className={styles.carouselInner}>
         {items.map((item, idx) => (
           <div key={item.id} className={styles.card}>
-            <Image 
-              ref={el => { imgRefs.current[idx] = el; }} 
-              src={item.image} 
-              alt={item.name} 
-              width={180}
-              height={120}
-              className={`${styles.cardImage} ${imageLoadingStates.has(item.id) ? styles.loading : ''}`}
-              onLoad={() => handleImageLoad(item.id)}
-              onError={() => handleImageError(item.id)}
-              placeholder="blur"
-              blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/w8AAn8B9n6l9wAAAABJRU5ErkJggg=="
-            />
+            {imageErrorStates[item.id] ? (
+              <div
+                className={`${styles.cardImage} ${styles.loading}`}
+                style={{ position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+              >
+                <img
+                  src="/lava_icon.png"
+                  alt="Lava Lublin logo placeholder"
+                  style={{ width: 36, height: 36, objectFit: 'contain', opacity: 0.85, position: 'absolute' }}
+                  aria-hidden="true"
+                />
+              </div>
+            ) : (
+              <div
+                ref={node => {
+                  if (node) {
+                    const img = node.querySelector('img');
+                    if (img) imgRefs.current[idx] = img;
+                  }
+                }}
+                style={{ width: '100%' }}
+              >
+                <Image 
+                  src={item.image} 
+                  alt={item.name} 
+                  width={180}
+                  height={120}
+                  className={`${styles.cardImage} ${imageLoadingStates.has(item.id) ? styles.loading : ''}`}
+                  onLoad={() => handleImageLoad(item.id)}
+                  onError={() => handleImageError(item.id)}
+                  placeholder="blur"
+                  blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/w8AAn8B9n6l9wAAAABJRU5ErkJggg=="
+                />
+              </div>
+            )}
             <div className={styles.cardTitleRow}>
               <span className={styles.cardTitle}>{item.name}</span>
             </div>

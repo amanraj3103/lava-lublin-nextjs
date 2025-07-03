@@ -1,4 +1,4 @@
-import { useCart } from '../contexts/CartContext';
+import { useCart } from '../context/CartContext';
 import styles from '../app/order/order.module.css';
 
 const DELIVERY_FEE = 500; // 5 PLN in grosz

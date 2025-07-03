@@ -9,7 +9,7 @@
           "name": "Golden Supreme Sandwich",
           "description": "Golden brioche bun with crispy Lava chicken, tomato, lettuce, green pepper, onion, arugula, green goddess mayo, and melted cheese sauce.",
           "price": 35.99,
-          "image": "/images/golden_supreme.jpg",
+          "image": "/images/test_burger.png",
           "tags": ["bestSeller"],
           "bestSeller": true,
           "recommendations": ["lava_wrap", "coca_cola"]

@@ -28,12 +28,12 @@ i18n
     interpolation: {
       escapeValue: false, // React already escapes values
     },
-    // Add these options to prevent hydration issues
-    react: {
-      useSuspense: false,
-    },
-    // Ensure consistent initialization
-    initImmediate: false,
+      // Add these options to prevent hydration issues
+      react: {
+        useSuspense: false,
+      },
+      // Ensure consistent initialization
+      initImmediate: false,
   });
 
 export default i18n; 

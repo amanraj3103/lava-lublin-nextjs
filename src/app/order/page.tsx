@@ -235,13 +235,13 @@ function OrderPageContent({ data, activeCategory, setActiveCategory, cartOpen, s
       <main className={styles.mainContent}>
         {/* Desktop Sidebar - only show on desktop */}
         {!isMobile && (
-          <aside className={styles.sidebar}>
-            <CategoryNav
-              categories={data.categories.map((cat) => ({ id: cat.id, name: cat.name }))}
-              activeId={activeCategory}
-              onSelect={handleSelectCategory}
-            />
-          </aside>
+        <aside className={styles.sidebar}>
+          <CategoryNav
+            categories={data.categories.map((cat) => ({ id: cat.id, name: cat.name }))}
+            activeId={activeCategory}
+            onSelect={handleSelectCategory}
+          />
+        </aside>
         )}
         
         <section style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '3rem', minWidth: 0 }}>
@@ -250,7 +250,7 @@ function OrderPageContent({ data, activeCategory, setActiveCategory, cartOpen, s
             <div className={styles.section} id="trending-section">
               <h2 className={styles.sectionTitle}>Trending & Best Sellers</h2>
               <TrendingCarousel items={trendingItems} />
-            </div>
+        </div>
           )}
           
           {/* Menu Categories */}
@@ -263,16 +263,16 @@ function OrderPageContent({ data, activeCategory, setActiveCategory, cartOpen, s
               })
               .filter(Boolean) as (MenuItem & { quantity: number })[];
             return (
-              <div key={cat.id} ref={(el) => { sectionRefs.current[cat.id] = el; }} id={cat.id} className={styles.section}>
-                <h2 className={styles.sectionTitle}>{cat.name}</h2>
-                <MenuGrid
-                  items={cat.items}
+            <div key={cat.id} ref={(el) => { sectionRefs.current[cat.id] = el; }} id={cat.id} className={styles.section}>
+              <h2 className={styles.sectionTitle}>{cat.name}</h2>
+              <MenuGrid
+                items={cat.items}
                   cartItems={cartItemsForCategory}
-                  onAdd={item => cart.addItem({ ...item, quantity: 1 })}
-                  onRemove={cart.removeItem}
-                  onUpdateQuantity={cart.updateQuantity}
-                />
-              </div>
+                onAdd={item => cart.addItem({ ...item, quantity: 1 })}
+                onRemove={cart.removeItem}
+                onUpdateQuantity={cart.updateQuantity}
+              />
+            </div>
             );
           })}
         </section>
@@ -282,13 +282,11 @@ function OrderPageContent({ data, activeCategory, setActiveCategory, cartOpen, s
       {cartOpen && (
         <div className={styles.cartModalOverlay} onClick={() => setCartOpen(false)}>
           <div className={styles.cartModal} onClick={e => e.stopPropagation()}>
-            <Suspense fallback={<LoadingFallback />}>
-              <CartDrawer 
-                open={true} 
-                onClose={() => setCartOpen(false)} 
-                onCheckout={handleCheckout}
-              />
-            </Suspense>
+            <CartDrawer 
+              open={true} 
+              onClose={() => setCartOpen(false)} 
+              onCheckout={handleCheckout}
+            />
           </div>
         </div>
       )}
@@ -313,26 +311,22 @@ function OrderPageContent({ data, activeCategory, setActiveCategory, cartOpen, s
             onClick={e => e.stopPropagation()}
           >
             <div style={{height: 'auto', display: 'flex', flexDirection: 'column', flex: 1}}>
-              <Suspense fallback={<LoadingFallback />}>
-                <CartDrawer 
-                  open={true} 
-                  onClose={() => setCheckoutOpen(false)} 
-                  onCheckout={() => {}} // No-op, already in checkout
-                />
-              </Suspense>
+              <CartDrawer 
+                open={true} 
+                onClose={() => setCheckoutOpen(false)} 
+                onCheckout={() => {}} // No-op, already in checkout
+              />
             </div>
             <div style={{height: 'auto', display: 'flex', flexDirection: 'column', flex: 1}}>
-              <Suspense fallback={<LoadingFallback />}>
-                <RecommendationsPanel 
-                  products={interactiveCheckoutProducts} 
-                  onAdd={item => cart.addItem({ ...item, quantity: 1 })}
-                  onBack={() => {
-                    setCheckoutOpen(false);
-                    setCartOpen(true);
-                  }}
-                  onProceed={() => { alert('Proceed to payment!'); }}
-                />
-              </Suspense>
+              <RecommendationsPanel 
+                products={interactiveCheckoutProducts} 
+                onAdd={item => cart.addItem({ ...item, quantity: 1 })}
+                onBack={() => {
+                  setCheckoutOpen(false);
+                  setCartOpen(true);
+                }}
+                onProceed={() => { alert('Proceed to payment!'); }}
+              />
             </div>
           </div>
         </div>

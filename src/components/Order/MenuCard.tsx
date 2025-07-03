@@ -42,6 +42,7 @@ export default function MenuCard({ item, cartItem, onAdd, onRemove, onUpdateQuan
   const cartIconRef = useContext(CartIconRefContext);
   const [imgRef, setImgRef] = useState<HTMLImageElement | null>(null);
   const [isImageLoading, setIsImageLoading] = useState(true);
+  const [hasImageError, setHasImageError] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false);
   const [quantityAnimating, setQuantityAnimating] = useState(false);
 
@@ -66,22 +67,45 @@ export default function MenuCard({ item, cartItem, onAdd, onRemove, onUpdateQuan
 
   const handleImageError = () => {
     setIsImageLoading(false);
+    setHasImageError(true);
+  };
+
+  const imageWrapperRef = (node: HTMLDivElement | null) => {
+    if (node) {
+      const img = node.querySelector('img');
+      if (img) setImgRef(img);
+    }
   };
 
   return (
     <div className={`${styles.menuCardStandard} ${isAnimating ? styles.addedAnimate : ''}`}>
-      <Image
-        ref={setImgRef}
-        src={item.image}
-        alt={item.name}
-        width={180}
-        height={120}
-        className={`${styles.menuImage} ${isImageLoading ? styles.loading : ''}`}
-        onLoad={handleImageLoad}
-        onError={handleImageError}
-        placeholder="blur"
-        blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/w8AAn8B9n6l9wAAAABJRU5ErkJggg=="
-      />
+      {hasImageError ? (
+        <div
+          className={`${styles.menuImage} ${styles.loading}`}
+          style={{ position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+        >
+          <img
+            src="/lava_icon.png"
+            alt="Lava Lublin logo placeholder"
+            style={{ width: 48, height: 48, objectFit: 'contain', opacity: 0.85, position: 'absolute' }}
+            aria-hidden="true"
+          />
+        </div>
+      ) : (
+        <div ref={imageWrapperRef} style={{ width: '100%' }}>
+          <Image
+            src={item.image}
+            alt={item.name}
+            width={180}
+            height={120}
+            className={`${styles.menuImage} ${isImageLoading ? styles.loading : ''}`}
+            onLoad={handleImageLoad}
+            onError={handleImageError}
+            placeholder="blur"
+            blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/w8AAn8B9n6l9wAAAABJRU5ErkJggg=="
+          />
+        </div>
+      )}
       <div className={styles.menuTitle}>{item.name}</div>
       <div className={styles.menuPrice}>{item.price.toFixed(2)} PLN</div>
       <div className={styles.menuDescWrapper}>
