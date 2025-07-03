@@ -4,8 +4,8 @@ import styles from '../app/order/order.module.css';
 const DELIVERY_FEE = 500; // 5 PLN in grosz
 
 const CartSummary: React.FC<{ onCheckout: () => void }> = ({ onCheckout }) => {
-  const { items, total, removeItem, updateQuantity, clearCart } = useCart();
-  const finalTotal = total + DELIVERY_FEE;
+  const { items, subtotal, removeItem, updateQuantity, clearCart } = useCart();
+  const finalTotal = subtotal + DELIVERY_FEE;
   const itemCount = items.reduce((sum, item) => sum + item.quantity, 0);
 
   return (
@@ -43,7 +43,7 @@ const CartSummary: React.FC<{ onCheckout: () => void }> = ({ onCheckout }) => {
       {items.length > 0 && (
         <>
           <div className={styles.cartTotals}>
-            <div className={styles.cartRow}><span>Subtotal:</span><span>{(total / 100).toFixed(2)} PLN</span></div>
+            <div className={styles.cartRow}><span>Subtotal:</span><span>{(subtotal / 100).toFixed(2)} PLN</span></div>
             <div className={styles.cartRow}><span>Delivery:</span><span>{(DELIVERY_FEE / 100).toFixed(2)} PLN</span></div>
             <div className={styles.cartRowTotal}><span>Total:</span><span>{(finalTotal / 100).toFixed(2)} PLN</span></div>
           </div>
